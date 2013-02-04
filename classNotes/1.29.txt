@@ -1,0 +1,61 @@
+HTML tags, while straightforward, are a noob way to web-develop.
+Why?
+    You have to repeat them for every website you develop instead of 
+    having it all set up for you everytime.
+The Solution:
+Cascading Style Sheets (CSS)
+    Separates structure, layout, and content.
+
+    A favorite icon is a 16x16 pixel image that represents a website 
+    (it is typically put right before the URL up top).
+
+{ font-size: 14px; }        /* this is a declaration */
+    ^          ^
+    |          |
+    |          |
+ property    value
+
+    The content in all paragraph tag will be 28 pixels
+    px --> pixels
+    %  --> percentage with respect to screen dimensions
+    in --> inches
+    pt --> point
+    cm --> centimeters
+
+    EXAMPLE CSS PAGE:
+
+    body {
+        font-family: 'Helvetica Neue'
+        background-color: #ffffff;  /* "ffffff" is a hexadecimal 
+                                     * representation of the colors:
+                                     * each two letters represent a 
+                                     * different color.  
+                                     */
+        /* for less precise colors you could say:
+
+        background-color: pink;
+        
+        */
+
+        font-size: x-small;
+        color: grey;
+    }
+
+    ul, h1, h2, h3, p {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+
+    li.one {
+        background-color: #ffff00;
+    }
+
+    li.two {
+        background-color: #ffa467;
+    }
+
+    h1, .repeat {
+        border-bottom black;
+        border-top    black;
+        border-left   black;
+        border-right  black;
