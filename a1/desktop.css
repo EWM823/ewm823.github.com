@@ -12,7 +12,6 @@ body.resume {
     font-family: Calibri, Charcoal, cursive;
 }
 body.index {
-    background-image:url('http://cdn.cutestpaw.com/wp-content/uploads/2011/11/Handsome-l.jpg');
     background-repeat:no-repeat;
     background-position: bottom center;
     background-color:gray;
@@ -23,6 +22,9 @@ p.info {
     text-align: center;
     text-color: blue;
 }
+
+p.pic {
+    text-align: center;
 
 h1 {
     font-family: Apple Chancery, Charcoal, serif;
