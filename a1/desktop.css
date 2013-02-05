@@ -7,14 +7,14 @@ display:inline;
 }
 
 body.resume {
-    text-align:center;
+    -text-align:center;
     background-color:yellow;
     font-family: Calibri, Charcoal, cursive;
 }
 body.index {
     background-image:url('http://rapradar.files.wordpress.com/2011/04/3-feet-high-and-rising-cover.jpg');
     background-repeat:no-repeat;
-    background-position: center-center;
+    background-position: center center;
     text-align:center;
     background-color:gray;
     font-family: Calibri, Charcoal, cursive;
