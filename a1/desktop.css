@@ -6,6 +6,8 @@ p.desktop {
 display:inline;
 }
 
-p {
+body {
     background-color:yellow;
+    font-family: Calibri, Charcoal, cursive;
+    
 }
