@@ -1,0 +1,9 @@
+Document Object Model (DOM)
+
+    Object: Structura Represetation of an HTML document ->A tree structure
+    containing all the objects in and HTML doc
+
+    Model:  API->libraries of interfaces, method and properties
+
+
+    
