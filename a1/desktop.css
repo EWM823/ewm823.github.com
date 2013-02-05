@@ -26,7 +26,6 @@ body.index {
 
 p.info {
     text-align: center;
-    text-color: blue;
 }
 
 p.pic {
@@ -39,5 +38,4 @@ h1 {
 p.story {
     font-family: Courier New, Charcoal, serif;
     font-size: small;
-    text-color: black;
 }
