@@ -1,7 +1,11 @@
 p.mobile {
-display:none;
+    display:none;
 }
 
 p.desktop {
 display:inline;
+}
+
+p {
+    background-color:yellow;
 }
