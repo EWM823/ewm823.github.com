@@ -1,5 +1,8 @@
 p.mobile {
     display:inline;
+    text-align:center;
+    background-color:yellow;
+    font-family: Calibri, Charcoal, cursive;
 }
 
 p.desktop {
