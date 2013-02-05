@@ -6,16 +6,21 @@ p.desktop {
 display:inline;
 }
 
+
+body.bio {
+    text-align:center;
+    background-color:pink;
+    font-family: Calibri, Charcoal, serif;
 body.resume {
     text-align:center;
     background-color:yellow;
-    font-family: Calibri, Charcoal, cursive;
+    font-family: Calibri, Charcoal, serif;
 }
 body.index {
     background-repeat:no-repeat;
     background-position: bottom center;
     background-color:gray;
-    font-family: Calibri, Charcoal, cursive;
+    font-family: Calibri, Charcoal, serif;
 }
 
 p.info {
@@ -30,4 +35,8 @@ h1 {
     font-family: Apple Chancery, Charcoal, serif;
     font-size: medium;
 }
-
+p.story {
+    font-family: Courier New, Charcoal, serif;
+    font-size: small;
+    text-color: black;
+}
