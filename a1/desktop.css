@@ -31,9 +31,12 @@ p.info {
 p.pic {
     text-align: center;
 }
-h1 {
+h1.desktop {
     font-family: Apple Chancery, Charcoal, serif;
     font-size: medium;
+}
+h1.mobile {
+    display:none;
 }
 p.story {
     font-family: Courier New, Charcoal, serif;
