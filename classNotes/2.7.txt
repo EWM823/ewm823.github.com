@@ -1,0 +1,54 @@
+JavaScript Notes:
+
+With just HTTP, HTML, and CSS,
+    * the content is STATIC--it cannot be changed.
+    * no data can be persistent
+    * No means of storing user's data between requests
+    --> HTTP is a stateless protocol.
+    * No info, including status about user, status codes, are ever retained.
+
+Client-Side Programming / Development
+    * Get info about a user's computer
+    * Download data from a web server
+    * Update only certain parts of an HTML document
+    * Calculations
+    * Render graphics on the body of a web page
+    * Redirect users to another web page (on another domain)
+    * Store data for a user
+    * Allow new methods of user interaction (e.g., animations)
+    * Get history of web pages visited
+
+    JavaScript IS NOT Java
+    JavaScript IS NOT a second-class citizen
+    JavaScript IS NOT compuled (well, for Comp 20 at least)
+    
+Similiarities between JavaScript and C/C++
+    * Commenting
+    * For the most part, syntax and keywords
+    * Style (use of {} [])
+    * The usual stuff like operators and operands.
+
+Key Concepts:
+    1. Variables
+    2. Functions
+    3. Objects
+
+Functions:
+    * Return type is not specified
+    * Parameters
+
+/* Function in C */
+double average(double num1, double num2){
+return (num1+num2)/2;
+}
+
+/* Function in JavaScript */
+function average(num1, num2)
+{
+    return (num1 + num2) / 2;
+}
+
+result = average(2); /* This is legal */
+                
+result = average(2, 3, "Batman"); /* This is also legal */
+                                  /* Extra arguments are thrown out */

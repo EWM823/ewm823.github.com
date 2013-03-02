@@ -1,0 +1,15 @@
+<title>Canvas Demo</title>
+<script>
+    function draw() {
+        canvas = document.getElementById('simple');
+
+        // Check if canvas is supported on browser
+        if (canvas.getContext) {
+                ctx = canvas.getContext('2d');
+                ctx.fillStyle = "rgb(0, 255, 0);
+                ctx.
+                ctx.
+                ctx.
+                ctx.
+                ctx.
+                ctx.

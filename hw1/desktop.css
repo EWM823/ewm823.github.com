@@ -1,0 +1,44 @@
+p.mobile {
+    display:none;
+}
+
+p.desktop {
+display:inline;
+}
+
+
+body.bio {
+    text-align:center;
+    background-color:gray;
+    font-family: Calibri, Charcoal, serif;
+}
+body.resume {
+    text-align:center;
+    background-color:yellow;
+    font-family: Calibri, Charcoal, serif;
+}
+body.index {
+    background-repeat:no-repeat;
+    background-position: bottom center;
+    background-color:gray;
+    font-family: Calibri, Charcoal, serif;
+}
+
+p.info {
+    text-align: center;
+}
+
+p.pic {
+    text-align: center;
+}
+h1.desktop {
+    font-family: Apple Chancery, Charcoal, serif;
+    font-size: medium;
+}
+h1.mobile {
+    display:none;
+}
+p.story {
+    font-family: Courier New, Charcoal, serif;
+    font-size: small;
+}
