@@ -60,7 +60,7 @@
             }
             function plot_w_and_c()
             { 
-                waldo_coord = new google.map.LatLng(parsed_w_and_c[0].loc.latitude, parsed_w_and_c[0].loc.longitude);
+                waldo_coord = new google.map.LatLng(parsed_w_and_c[0][loc][latitude], parsed_w_and_c[0][loc][longitude]);
                 carmen_coord = new google.map.LatLng(parsed_w_and_c[1].loc.latitude, parsed_w_and_c[1].loc.longitude);
 				waldo_marker = new google.maps.Marker({
 					position: waldo_coord,
