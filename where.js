@@ -29,7 +29,7 @@
 
 			function parse_stations()
 			{
-				parsed_stations = JSON.parse(stations);
+				var parsed_stations = JSON.parse(stations);
 			}
 			
 			/* get Red Line MBTA schedule information */
