@@ -1,6 +1,7 @@
 			var myLat = 0;
 			var myLng = 0;
-			var request = new XMLHttpRequest();
+			var request_sched = new XMLHttpRequest();
+			var request_w_and_c = new XMLHttpRequest();
 			var me = new google.maps.LatLng(myLat, myLng);
 			var myOptions = {
 						zoom: 13, // The larger the zoom number, the bigger the zoom
@@ -16,20 +17,33 @@
 			{
 				map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 				getMyLocation();
-				request.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
-				request.send(null);
-                request.onreadystatechange = parse;
-
+				request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
+				request_sched.send(null);
+                request_sched.onreadystatechange = parse_sched;
+				request_w_and_c.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
+				request_w_and_c.send(null);
+                request_w_and_c.onreadystatechange = parse_waldo_and_carmen;
 			}
 			
-			function parse()
+			function parse_sched()
 			{
-			if (request.status == 0) {
-                    alert("file failed to load");
+				if (request_sched.status == 0) {
+                    alert("File failed to load.");
                 }
-                if (request.readyState==4 && request.status==200) {
-                var str = request.responseText;
-                parsed = JSON.parse(str);
+                if (request_sched.readyState==4 && request_sched.status==200) {
+                	var str = request_sched.responseText;
+                	parsed = JSON.parse(str);
+                }
+            }
+
+			function parse_w_and_c()
+			{
+				if (request_w_and_c.status == 0) {
+                    alert("File failed to load.");
+            	}
+            	if (request_w_and_c.readyState==4 && request_w_and_c.status==200) {
+            	    var str = request_w_and_c.responseText;
+                	parsed = JSON.parse(str);
                 }
             }
 
