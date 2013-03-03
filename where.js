@@ -38,7 +38,7 @@
 				request_w_and_c.send(null);
 				/* get parsed locations/info of waldo and carmen sandiego */
                 request_w_and_c.onreadystatechange = parse_w_and_c;
-                plot_w_and_c()
+             //   plot_w_and_c()
                 plot_stations()
                 draw_lines()
 			}
@@ -60,9 +60,33 @@
             	if (request_w_and_c.readyState==4 && request_w_and_c.status==200) {
             	    var str = request_w_and_c.responseText;
                 	parsed_w_and_c = JSON.parse(str);
+                	
+                	var curr_marker;           	
+				var curr_coords; 
+				
+			
+            	for (i=0; i < parsed_w_and_c.length; i++) {
+     		       	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, parsed_w_and_c[i].loc.longitude);        		        		
+	           		curr_marker = new google.maps.Marker({
+    	       			position: curr_coords,
+        	   			title: parsed_w_and_c[i].loc.note,
+            			icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+            		});
+            		curr_marker.setMap(map);
+            		w_and_c_marker.push(curr_marker);
+            		
+            		w_and_c_marker[i] = curr_marker;  		
+	        		google.maps.event.addListener(w_and_c_marker[i], 'click', (function(i) {
+						return function () {
+							w_and_c_iw[i] = new google.maps.InfoWindow({content: w_and_c_marker[i].title});
+	        				w_and_c_iw[i].setContent(w_and_c_marker[i].title);
+        	    			w_and_c_iw[i].open(map, w_and_c_marker[i]);
+        	    		}
+            		})(i));
+            	}
                 }
             }
-            function plot_w_and_c()
+   /*         function plot_w_and_c()
             {
             	var curr_marker;           	
 				var curr_coords; 
@@ -89,7 +113,7 @@
             	}
             }
           
-          	
+  */        	
             function plot_stations() {
        			var curr_marker;           	
 				var curr_station;
