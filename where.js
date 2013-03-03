@@ -65,7 +65,7 @@
             function plot_w_and_c()
             {
             	var curr_marker;           	
-				var curr_coords; //curr_stations
+				var curr_coords; 
             	for (var i in parsed_w_and_c) {
 					
      		       	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, stations[i].loc.longitude);        		        		
@@ -78,7 +78,7 @@
             		w_and_c_marker.push(curr_marker);
             		
             		w_and_c_marker[i] = curr_marker;  		
-	        		google.maps.event.addListener(stations_marker[i], 'click', (function(i) {
+	        		google.maps.event.addListener(w_and_c_marker[i], 'click', (function(i) {
 						return function () {
 							w_and_c_iw[i] = new google.maps.InfoWindow({content: w_and_c_marker[i].title});
 	        				w_and_c_iw[i].setContent(w_and_c_marker[i].title);
