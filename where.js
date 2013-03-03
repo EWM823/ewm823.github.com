@@ -57,8 +57,8 @@
             
             function plot_stations() {
             	var j = index_of_markers + 1;
-            	curr_station = new google.maps.LatLng(stations[j][0], stations[j][1]);        			            		
-         		curr_marker = new google.maps.Marker({
+            	var curr_station = new google.maps.LatLng(stations[j][0], stations[j][1]);        			            		
+         		var curr_marker = new google.maps.Marker({
             		position: curr_station,
             		title: stations[j][2],
             		icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
