@@ -1,4 +1,4 @@
-var myLat = 0;
+			var myLat = 0;
 			var myLng = 0;
 			var request = new XMLHttpRequest();
 			var me = new google.maps.LatLng(myLat, myLng);
