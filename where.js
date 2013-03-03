@@ -85,7 +85,7 @@
             	}
             }
 			            	
-*/
+
 			/* uses navigator.geolocation to find my location */
 			function getMyLocation()
 			{
