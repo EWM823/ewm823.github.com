@@ -70,11 +70,14 @@
             		curr_marker.setMap(map);
             		google.maps.event.addListener(curr_marker, 'click', function() {
             			infowindow.setContent(curr_marker.title);
-            			infowindow.open(map, curr_marker;
+            			infowindow.open(map, curr_marker);
             		});
+            	}
+            }
             		
-                }
-        	}        
+                
+                
+        	        
 			/* uses navigator.geolocation to find my location */
 			function getMyLocation()
 			{
