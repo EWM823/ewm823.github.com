@@ -55,16 +55,23 @@
             
             function plot_stations() {
             	var curr_marker;
+            	// Create our "tiny" marker icon
+				//var blueIcon = new GIcon(G_DEFAULT_ICON);
+				//blueIcon.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png";
+                
+				// Set up our GMarkerOptions object
+				//markerOptions = { icon:blueIcon };
+
             	for (var i in stations) {
-            		curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);
-            		curr_marker = new google.maps.Marker({
+            		curr_station[i] = new google.maps.LatLng(stations[i][0], stations[i][1]);
+            		curr_marker[i] = new google.maps.Marker({
             			position: curr_station,
             			title: stations[i][2]
             		});
-            		curr_marker.setMap(map);
-            		google.maps.event.addListener(curr_marker, 'click', function() {
-            			infowindow.setContent(curr_marker.title);
-            			infowindow.open(map, curr_marker);
+            		curr_marker[i].setMap(map);
+            		google.maps.event.addListener(curr_marker[i], 'click', function() {
+            			infowindow.setContent(curr_marker[i].title);
+            			infowindow.open(map, curr_marker[i]);
             		});
             		
                 }
@@ -80,7 +87,7 @@
 					});
 				}
 				else {
-					alert("Geolocation is not supported by your web browser.  What a shame!");
+					alert("Geolocation is not supported by your browser.");
 				}
 			}
 			/* renders map to go to my position */
