@@ -53,7 +53,7 @@
             }
             
             function plot_stations() {
-            	var curr_marker;
+            	var curr_marker[10];
             	// Create our "tiny" marker icon
 				//var blueIcon = new GIcon(G_DEFAULT_ICON);
 				//blueIcon.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png";
