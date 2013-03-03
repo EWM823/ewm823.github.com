@@ -23,7 +23,7 @@
 			var stations_marker = [];
 			var w_and_c_marker = [];
 			var stations_iw = [];
-			var w_and_c_if = [];
+			var w_and_c_iw = [];
 			//var stations_line = [];
 			
 			function init()
@@ -37,8 +37,7 @@
 				request_w_and_c.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
 				request_w_and_c.send(null);
 				/* get parsed locations/info of waldo and carmen sandiego */
-                request_w_and_c.onreadystatechange = parse_w_and_c;
-             //   plot_w_and_c()
+                request_w_and_c.onreadystatechange = plot_w_and_c;
                 plot_stations()
                 draw_lines()
 			}
@@ -52,7 +51,7 @@
                 }
             }
             /* find location of waldo and carmen from JSON format*/
-			function parse_w_and_c()
+			function plot_w_and_c()
 			{
 				if (request_w_and_c.status == 0) {
                     alert("File failed to load.");
@@ -62,8 +61,8 @@
                 	parsed_w_and_c = JSON.parse(str);
                 	
                 	var curr_marker;           	
-				var curr_coords; 
-				
+					var curr_coords; 
+							
 			
             	for (i=0; i < parsed_w_and_c.length; i++) {
      		       	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, parsed_w_and_c[i].loc.longitude);        		        		
