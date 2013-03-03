@@ -22,7 +22,7 @@
                 request_sched.onreadystatechange = parse_sched;
 				request_w_and_c.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
 				request_w_and_c.send(null);
-                request_w_and_c.onreadystatechange = parse_waldo_and_carmen;
+                request_w_and_c.onreadystatechange = parse_w_and_c;
 			}
 			
 			function parse_sched()
