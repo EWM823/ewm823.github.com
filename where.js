@@ -27,9 +27,9 @@
 			
 			function parse_sched()
 			{
-				if (request_sched.status == 0) {
-                    alert("File failed to load.");
-                }
+				//if (request_sched.status == 0) {
+                 //   alert("File failed to load.");
+                //}
                 if (request_sched.readyState==4 && request_sched.status==200) {
                 	var str = request_sched.responseText;
                 	parsed_sched = JSON.parse(str);
