@@ -15,7 +15,7 @@
 			var infowindow = new google.maps.InfoWindow();
 			var places;
 			var stations = {"RALE": [42.395428, -71.142483, "Alewife"],"RDAV": [42.39674, -71.121815, "Davis"],"RPOR": [42.3884, -71.119149, "Porter Square "],"RHAR": [42.373362, -71.118956, "Harvard Square"],"RCEN": [42.365486, -71.103802, "Central Square"],"RKEN": [42.36249079, -71.08617653, "Kendall/MIT"],"RMGH": [42.361166, -71.070628, "Charles/MGH"],"RPRK": [42.35639457, -71.0624242,"Park Street"],"RDTC": [42.355518, -71.060225, "Downtown Crossing"],"RSOU": [42.352271, -71.055242, "South"],"RBRO": [42.342622, -71.056967, "Broadway"],"RAND": [42.330154, -71.057655, "Andrew"],"RJFK": [42.320685, -71.052391, "JFK/UMass"],"RSAV": [42.31129, -71.053331, "Savin Hill"],"RFIE": [42.300093, -71.061667, "Fields Corner"],"RSHA": [42.29312583, -71.06573796, "Shawmut"],"RASH":[42.284652, -71.064489,"Ashmont"],"RNQU": [42.275275, -71.029583, "North Quincy"],"RWOL": [42.2665139, -71.0203369,"Wollaston"],"RQUC": [42.251809, -71.005409, "Quincy CenterStation"],"RQUA":[42.233391, -71.007153, "QuincyAdams"],"RBRA": [42.2078543, -71.0011385, "Braintree"]};
-			var station_markers;[10]
+			
 			
 			function init()
 			{
@@ -53,7 +53,7 @@
             }
             
             function plot_stations() {
-            
+            	curr_marker;
             	// Create our "tiny" marker icon
 				//var blueIcon = new GIcon(G_DEFAULT_ICON);
 				//blueIcon.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png";
@@ -63,14 +63,14 @@
 
             	for (var i in stations) {
             		curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);
-            		station_markers[i] = new google.maps.Marker({
+            		curr_marker[i] = new google.maps.Marker({
             			position: curr_station,
             			title: stations[i][2]
             		});
-            		station_markers[i].setMap(map);
-            		google.maps.event.addListener(stations_marker[i], 'click', function() {
-            			infowindow.setContent(stations_marker[i].title);
-            			infowindow.open(map, stations_marker[i]);
+            		curr_marker[i].setMap(map);
+            		google.maps.event.addListener(curr_marker[i], 'click', function() {
+            			infowindow.setContent(curr_marker[i].title);
+            			infowindow.open(map, curr_marker[i]);
             		});
             		
                 }
