@@ -1,10 +1,14 @@
 			var myLat = 0;
 			var myLng = 0;
-			
+			var waldo_coord;
+			var carmen_coord;
+			var waldo_marker;
+			var carmen_marker;
 			var request_sched = new XMLHttpRequest();
 			var request_w_and_c = new XMLHttpRequest();
 			
 			var me = new google.maps.LatLng(myLat, myLng);
+			var carmen = new google.maps.LatLng(myLat,
 			var myOptions = {
 						zoom: 13, // The larger the zoom number, the bigger the zoom
 						center: me,
@@ -31,6 +35,7 @@
 				request_w_and_c.send(null);
 				/* get parsed locations/info of waldo and carmen sandiego */
                 request_w_and_c.onreadystatechange = parse_w_and_c;
+                plot_w_and_c()
                 plot_stations()
                 draw_lines()
 			}
@@ -54,7 +59,35 @@
                 	parsed_w_and_c = JSON.parse(str);
                 }
             }
+            function plot_w_and_c()
+            { 
+                waldo_coord = new google.map.LatLng(parsed_w_and_c[0].loc.latitude, parsed_w_and_c[0].loc.longitude);
+                carmen_coord = new google.map.LatLng(parsed_w_and_c[1].loc.latitude, parsed_w_and_c[1].loc.longitude);
+				waldo_marker = new google.maps.Marker({
+					position: waldo_coord,
+					title: parsed_w_and_c[0].loc.note,
+					icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot/png'
+				});
+				waldo_marker.setMap(map);
+				carmen_marker = new google.maps.Marker({
+					position: carmen_coord,
+					title: parsed_w_and_c[1].loc.note,
+					icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot/png'
+				});
+				carmen_marker.setMap(map);
+				google.maps.event.addListener(waldo_marker, 'click', function() {
+					infowindow.close();
+					infowindow.setContent(waldo_marker.title);
+					infowindow.open(map, this);
+				});
+				google.maps.event.addListener(carmen_marker, 'click', function() {
+					infowindow.close();
+					infowindow.setContent("Carmen Sandiego:\n" + carmen_marker.title);
+					infowindow.open(map, this);
+				});
+            }
           
+          	
             function plot_stations() {
        			var curr_marker;           	
 				var curr_station;
