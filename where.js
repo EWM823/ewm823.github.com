@@ -7,6 +7,8 @@
 			var request_sched = new XMLHttpRequest();
 			var request_w_and_c = new XMLHttpRequest();
 			
+			var parsed_w_and_c;
+			
 			var me = new google.maps.LatLng(myLat, myLng);
 			var myOptions = {
 						zoom: 13, // The larger the zoom number, the bigger the zoom
