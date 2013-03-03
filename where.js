@@ -83,7 +83,7 @@
 			   
 			function draw_lines()
 			{
-			var polyOptions = {strokeColor: '#FF0000',strokeOpacity: 0.6,strokeWeight: 5}
+			var polyOptions = {strokeColor: '#FF0000',strokeOpacity: 0.6,strokeWeight: 5, icons: for (var i in stations) { stations[i][0], stations[i][1]}}
 			for (var i in stations) {
 				stations_line = new google.maps.Polyline(stations[i][0], stations[i][1]);
 			    
