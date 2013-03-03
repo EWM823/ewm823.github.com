@@ -71,6 +71,7 @@
             			});
             		})(i);
             	}
+            }
 			            	
 
 			/* uses navigator.geolocation to find my location */
