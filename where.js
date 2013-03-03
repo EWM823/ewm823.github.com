@@ -86,8 +86,9 @@
 			var stations_coords = [];
 			for (var i in stations) {
 				stations_coords.push(stations[i][0]);
+				stations_coords.push(stations[i][1]);
 			}
-			var polyOptions = {strokeColor: '#FF0000',strokeOpacity: 0.6,strokeWeight: 5, icons: stations_coords}
+			var polyOptions = {strokeColor: '#FF0000',strokeOpacity: 0.6,strokeWeight: 5, path: stations_coords}
 			
 			for (var i in stations) {
 				stations_line = new google.maps.Polyline(polyOptions);
