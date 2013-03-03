@@ -19,7 +19,6 @@
 			
 			function init()
 			{
-			console.log("got here");
 				map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 				getMyLocation();
 				request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
@@ -63,7 +62,7 @@
 				//markerOptions = { icon:blueIcon };
 
             	for (var i in stations) {
-            		curr_station[i] = new google.maps.LatLng(stations[i][0], stations[i][1]);
+            		curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);
             		curr_marker[i] = new google.maps.Marker({
             			position: curr_station,
             			title: stations[i][2]
