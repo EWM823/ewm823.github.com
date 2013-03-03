@@ -66,7 +66,8 @@
             {
             	var curr_marker;           	
 				var curr_coords; 
-            	for (var i in parsed_w_and_c) {
+				var length = parsed_w_and_c.keys.length;
+            	for (i=0; i < length; i++) {
 					console.log("hey");
      		       	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, stations[i].loc.longitude);        		        		
 	           		curr_marker = new google.maps.Marker({
