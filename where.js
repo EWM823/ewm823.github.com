@@ -54,6 +54,7 @@
             
             function plot_stations() {
        			var curr_marker;
+            	map.addControl(new GSmallMapControl());
             	// Create our "tiny" marker icon
 				var blueIcon = new GIcon(G_DEFAULT_ICON);
 				blueIcon.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png";
