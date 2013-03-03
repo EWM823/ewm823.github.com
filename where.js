@@ -63,11 +63,11 @@
             function plot_w_and_c()
             { 
             
-            	var waldo_long = parsed_w_and_c[0].loc.longitude
+            	/* var waldo_long = parsed_w_and_c[0].loc.longitude
             	var waldo_lat = parsed_w_and_c[0].loc.latitude
             	var carmen_long = parsed_w_and_c[1].loc.longitude
-             	var carmen_lat = parsed_w_and_c[1].loc.latitude
-                var waldo_coord = new google.map.LatLng(waldo_lat, waldo_long);
+             	var carmen_lat = parsed_w_and_c[1].loc.latitude */
+//                var waldo_coord = new google.map.LatLng(waldo_lat, waldo_long);
                 var carmen_coord = new google.map.LatLng(parsed_w_and_c[1].loc.latitude, parsed_w_and_c[1].loc.longitude);
 				waldo_marker = new google.map.Marker({
 					position: waldo_coord,
