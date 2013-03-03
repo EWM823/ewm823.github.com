@@ -83,17 +83,24 @@
 			   
 			function draw_lines()
 			{
-			var stations_coords = [];
-			for (var i in stations) {
-				stations_coords.push(stations[i][0]);
-				stations_coords.push(stations[i][1]);
-			}
-			var polyOptions = {strokeColor: '#FF0000',strokeOpacity: 0.6,strokeWeight: 5, path: stations_coords}
+				var stations_coords = [];
+				for (var i in stations) {
+					coord = new google.maps.LatLng(stations[i][0], stations[i][1]);
+					stations_coords.push(coord);
+				}
+				var polyOptions = new google.maps.Polyline({
+    	        	map: map,
+        	    	path: stations_coords,
+              	    strokeColor: "#FF0000",
+        	    	strokeOpacity: .6,
+				    strokeWeight: 3,
+                    clickable: false
+            	});
+				mypolyline.setMap(map);
 			
-			for (var i in stations) {
-				stations_line = new google.maps.Polyline(polyOptions);
-			    
-			}
+				for (var i in stations) {
+					stations_line = new google.maps.Polyline(polyOptions);  
+				}
 			}
 
 			/* uses navigator.geolocation to find my location */
