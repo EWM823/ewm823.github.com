@@ -32,7 +32,7 @@
 				/* get parsed locations/info of waldo and carmen sandiego */
                 request_w_and_c.onreadystatechange = parse_w_and_c;
                 plot_stations()
-            //    draw_lines()
+                draw_lines()
 			}
 			
 			/* get Red Line MBTA schedule information for JSON format*/
@@ -81,12 +81,14 @@
             	}
             }
 			   
-			//function draw_lines()
-			//{
-			//var polyOptions = {strokeColor: '#FF0000',strokeOpacity: 0.6,strokeWeight: 5}
-			//for (var i in stations) {
-			//	stations_line = new google.maps.Polyline(polyOptions);
-			         	
+			function draw_lines()
+			{
+			var polyOptions = {strokeColor: '#FF0000',strokeOpacity: 0.6,strokeWeight: 5}
+			for (var i in stations) {
+				stations_line = new google.maps.Polyline(stations[i][0], stations[i][1]);
+			    
+			}
+			}
 
 			/* uses navigator.geolocation to find my location */
 			function getMyLocation()
