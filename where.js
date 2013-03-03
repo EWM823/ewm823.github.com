@@ -56,11 +56,11 @@
             }
             
             function plot_stations() {
-            	var i = index_of_markers;
-            	curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        			            		
+            	var j = index_of_markers;
+            	curr_station = new google.maps.LatLng(stations[j][0], stations[j][1]);        			            		
          		curr_marker = new google.maps.Marker({
             		position: curr_station,
-            		title: stations[i][2],
+            		title: stations[j][2],
             		icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
             	});
             	curr_marker.setMap(map);
@@ -68,7 +68,7 @@
             		infowindow.setContent(curr_marker.title);
             		infowindow.open(map, curr_marker);
             	});
-            	station_markers[i] = curr_marker;
+            	station_markers[j] = curr_marker;
             	index_of_markers++;
             }
             		
