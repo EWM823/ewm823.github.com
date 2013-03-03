@@ -96,11 +96,8 @@
 				    strokeWeight: 3,
                     clickable: false
             	});
-				mypolyline.setMap(map);
-			
-				for (var i in stations) {
-					stations_line = new google.maps.Polyline(polyOptions);  
-				}
+            	stations_line = new google.maps.Polyline(polyOptions);
+				stations_line.setMap(map);
 			}
 
 			/* uses navigator.geolocation to find my location */
