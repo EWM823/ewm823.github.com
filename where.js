@@ -56,14 +56,15 @@
        			var curr_marker = new Array();            	
 
             	for (var i in stations) {
-            		(function(i){
-	            		curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		        		
-	            		curr_marker[i] = new google.maps.Marker({
-    	        			position: curr_station,
-        	    			title: stations[i][2],
-            				icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-            			});
-            			curr_marker[i].setMap(map);	
+     		       	curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		        		
+	           		curr_marker[i] = new google.maps.Marker({
+    	       			position: curr_station,
+        	   			title: stations[i][2],
+            			icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+            		});
+            		curr_marker[i].setMap(map);	
+
+            		(function(i){   		
 	            		google.maps.event.addListener(curr_marker[i], 'click', function() {
     	        			stations_iw[i].setContent(curr_marker[i].title);
         	    			stations_iw[i].open(map, curr_marker[i]);
