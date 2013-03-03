@@ -59,7 +59,7 @@
             		curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);
             		curr_marker = new google.maps.Marker({
             			position: curr_station,
-            			title: stations[2]
+            			title: stations[i][2]
             		});
             		curr_marker.setMap(map);
             		//google.maps.event.addListener(curr_marker, 'click', function() {
