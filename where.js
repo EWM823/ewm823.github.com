@@ -60,26 +60,31 @@
             }
             function plot_w_and_c()
             { 
-                var waldo_coord = new google.map.LatLng(parsed_w_and_c[0].loc.latitude, parsed_w_and_c[0].loc.longitude);
+            
+            	var waldo_long = parsed_w_and_c[0].loc.longitude
+            	var waldo_lat = parsed_w_and_c[0].loc.latitude
+            	var carmen_long = parsed_w_and_c[1].loc.longitude
+             	var carmen_lat = parsed_w_and_c[1].loc.latitude
+                var waldo_coord = new google.map.LatLng(waldo_lat, waldo_long);
                 var carmen_coord = new google.map.LatLng(parsed_w_and_c[1].loc.latitude, parsed_w_and_c[1].loc.longitude);
-				waldo_marker = new google.maps.Marker({
+				waldo_marker = new google.map.Marker({
 					position: waldo_coord,
 					title: parsed_w_and_c[0].loc.note,
 					icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot/png'
 				});
 				waldo_marker.setMap(map);
-				carmen_marker = new google.maps.Marker({
+				carmen_marker = new google.map.Marker({
 					position: carmen_coord,
 					title: parsed_w_and_c[1].loc.note,
 					icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot/png'
 				});
 				carmen_marker.setMap(map);
-				google.maps.event.addListener(waldo_marker, 'click', function() {
+				google.map.event.addListener(waldo_marker, 'click', function() {
 					infowindow.close();
 					infowindow.setContent(waldo_marker.title);
 					infowindow.open(map, this);
 				});
-				google.maps.event.addListener(carmen_marker, 'click', function() {
+				google.map.event.addListener(carmen_marker, 'click', function() {
 					infowindow.close();
 					infowindow.setContent("Carmen Sandiego:\n" + carmen_marker.title);
 					infowindow.open(map, this);
