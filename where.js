@@ -68,7 +68,7 @@
     	        			stations_iw[i].setContent(curr_marker[i].title);
         	    			stations_iw[i].open(map, curr_marker[i]);
             			});
-            		})
+            		})(i);
             	}
 			            	
 
