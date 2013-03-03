@@ -70,7 +70,7 @@
 	           		curr_marker = new google.maps.Marker({
     	       			position: curr_station,
         	   			title: stations[i][2],
-            			icon: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW
+            			icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
             		});
             		curr_marker.setMap(map);	
             		stations_marker.push(curr_marker);
