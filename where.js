@@ -8,7 +8,6 @@
 			var request_w_and_c = new XMLHttpRequest();
 			
 			var me = new google.maps.LatLng(myLat, myLng);
-			var carmen = new google.maps.LatLng(myLat,
 			var myOptions = {
 						zoom: 13, // The larger the zoom number, the bigger the zoom
 						center: me,
