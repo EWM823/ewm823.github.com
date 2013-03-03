@@ -53,23 +53,22 @@
             }
             
             function plot_stations() {
-       			var curr_marker;
-            	
+       			var curr_marker = new Array();            	
 
             	for (var i in stations) {
             		curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		
             		
             		
             		
-            		curr_marker = new google.maps.Marker({
+            		curr_marker[i] = new google.maps.Marker({
             			position: curr_station,
             			title: stations[i][2],
             			icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
             		});
-            		curr_marker.setMap(map);
-            		google.maps.event.addListener(curr_marker, 'click', function() {
-            			infowindow.setContent(curr_marker.title);
-            			infowindow.open(map, curr_marker);
+            		curr_marker[i].setMap(map);
+            		google.maps.event.addListener(curr_marker[i], 'click', function() {
+            			infowindow.setContent(curr_marker[i].title);
+            			infowindow.open(map, curr_marker[i]);
             		});
             	}
             }
