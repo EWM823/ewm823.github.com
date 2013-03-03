@@ -1,7 +1,7 @@
 			var myLat = 0;
 			var myLng = 0;
-			var waldo_coord;
-			var carmen_coord;
+	//		var waldo_coord;
+		//	var carmen_coord;
 			var waldo_marker;
 			var carmen_marker;
 			var request_sched = new XMLHttpRequest();
@@ -60,8 +60,8 @@
             }
             function plot_w_and_c()
             { 
-                waldo_coord = new google.map.LatLng(parsed_w_and_c[0].loc.latitude, parsed_w_and_c[0].loc.longitude);
-                carmen_coord = new google.map.LatLng(parsed_w_and_c[1].loc.latitude, parsed_w_and_c[1].loc.longitude);
+                var waldo_coord = new google.map.LatLng(parsed_w_and_c[0].loc.latitude, parsed_w_and_c[0].loc.longitude);
+                var carmen_coord = new google.map.LatLng(parsed_w_and_c[1].loc.latitude, parsed_w_and_c[1].loc.longitude);
 				waldo_marker = new google.maps.Marker({
 					position: waldo_coord,
 					title: parsed_w_and_c[0].loc.note,
