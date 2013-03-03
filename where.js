@@ -32,7 +32,7 @@
                 }
                 if (request_sched.readyState==4 && request_sched.status==200) {
                 	var str = request_sched.responseText;
-                	parsed = JSON.parse(str);
+                	parsed_sched = JSON.parse(str);
                 }
             }
 
@@ -43,7 +43,7 @@
             	}
             	if (request_w_and_c.readyState==4 && request_w_and_c.status==200) {
             	    var str = request_w_and_c.responseText;
-                	parsed = JSON.parse(str);
+                	parsed_w_and_c = JSON.parse(str);
                 }
             }
 
