@@ -54,29 +54,23 @@
             
             function plot_stations() {
        			var curr_marker;
-            	map.addControl(new GSmallMapControl());
-            	// Create our "tiny" marker icon
-				var blueIcon = new GIcon(G_DEFAULT_ICON);
-				blueIcon.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png";
-                
-				//Set up our GMarkerOptions object
-				markerOptions = { icon:blueIcon };
+            	
 
             	for (var i in stations) {
-            		curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);
-            		map.addOverlay(new GMarker(curr_station, markerOptions));            		
+            		curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		
             		
             		
             		
-            		//curr_marker = new google.maps.Marker({
-            		//	position: curr_station,
-            		//	title: stations[i][2]
-            		//});
-            		//curr_marker.setMap(map);
-            		//google.maps.event.addListener(curr_marker, 'click', function() {
-            		//	infowindow.setContent(curr_marker.title);
-            		//	infowindow.open(map, curr_marker);
-            		//});
+            		curr_marker = new google.maps.Marker({
+            			position: curr_station,
+            			title: stations[i][2],
+            			icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+            		});
+            		curr_marker.setMap(map);
+            		google.maps.event.addListener(curr_marker, 'click', function() {
+            			infowindow.setContent(curr_marker.title);
+            			infowindow.open(map, curr_marker);
+            		});
             	}
             }
             		
