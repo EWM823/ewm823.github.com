@@ -55,7 +55,7 @@
                 }
             }
             
-            function plot_stations(var i) {
+            function plot_stations(i) {
             	
             	curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        			            		
          		curr_marker = new google.maps.Marker({
