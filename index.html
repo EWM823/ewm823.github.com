@@ -3,13 +3,16 @@
 <html>
 
 <head>
-<link rel="stylesheet" href="where.css">
-<title>Where?</title>
-<script src="where.js"></script>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="where.css">
+	<title>Where?</title>
+	<script type = "text/javascript" src="where.js"></script>
+	<script type = "text/javascript" src="http://maps.google.com/maps/api/js?sensor=true">
+	</script>
 </head>
 
-<body id="where" onload="init()">
-<div id="list"></div>
+<body onload="init()">
+	<div id="map_canvas"></div>
 </body>
 
 </html>
