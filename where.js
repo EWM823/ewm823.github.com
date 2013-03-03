@@ -26,7 +26,7 @@
 				request_w_and_c.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
 				request_w_and_c.send(null);
                 request_w_and_c.onreadystatechange = parse_w_and_c;
-                parse_stations;
+                parsed_stations;
 			}
 
 
