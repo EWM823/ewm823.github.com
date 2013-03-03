@@ -65,7 +65,6 @@
             			title: stations[i][2],
             			icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
             		});
-            		curr_marker[i].setMap(map);
             		google.maps.event.addListener(curr_marker[i], 'click', function() {
             			infowindow.setContent(curr_marker[i].title);
             			infowindow.open(map, curr_marker[i]);
