@@ -65,6 +65,7 @@
        			var curr_marker;           	
 				var curr_station;
             	for (var i in stations) {
+					
      		       	curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		        		
 	           		curr_marker = new google.maps.Marker({
     	       			position: curr_station,
@@ -78,6 +79,7 @@
             			stations_marker[i] = curr_marker;  		
 	            		google.maps.event.addListener(stations_marker[i], 'click', (function(i) {
 							return function () {
+								stations_iw[i] = new google.maps.InfoWindow({content: stations_marker[i].title});
     	        				stations_iw[i].setContent(stations_marker[i].title);
         	    				stations_iw[i].open(map, stations_marker[i]);
         	    			}
