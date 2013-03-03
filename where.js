@@ -69,7 +69,7 @@
             			stations_marker[i] = curr_marker;  		
 	            		google.maps.event.addListener(stations_marker[i], 'click', function() {
     	        			stations_iw[i].setContent(stations_marker[i].title);
-        	    			stations_iw[i].open(map, stations_marker[i];
+        	    			stations_iw[i].open(map, stations_marker[i]);
             			});
             		})(i);
             	}
