@@ -32,7 +32,7 @@
 				/* get parsed locations/info of waldo and carmen sandiego */
                 request_w_and_c.onreadystatechange = parse_w_and_c;
                 plot_stations()
-                draw_lines()
+            //    draw_lines()
 			}
 			
 			/* get Red Line MBTA schedule information for JSON format*/
