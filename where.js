@@ -9,7 +9,7 @@
 						mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
 			var map;
-			var marker;
+			var marker_me;
 			var infowindow = new google.maps.InfoWindow();
 			var places;
 			var stations = [{"RALE": "42.395428,-71.14248"}, {"RDAV": "42.39674,-71.121815"}, {"RPOR": "42.3884,-71.119149"}, {"RHAR": "42.373362,-71.118956"}, {"RCEN": "42.365486,-71.103802"}, {"RKEN": "42.36249079,-71.08617653"}, {"RMGH": "42.361166,-71.070628"}, {"RPRK": "42.35639457,-71.0624242"}, {"RDTC": "42.355518,-71.060225"}, {"RSOU": "42.352271,-71.055242"}, {"RBRO": "42.342622,-71.056967"}, {"RAND": "42.330154,-71.057655"}, {"RJFK": "42.320685,-71.052391"}, {"RSAV": "42.31129,-71.053331"}, {"RFIE": "42.300093,-71.061667"}, {"RSHA": "42.29312583,-71.06573796"}, {"RASH": "42.284652,-71.064489"}, {"RNQU": "42.275275,-71.029583"}, {"RWOL": "42.2665139,-71.0203369"}, {"RQUC": "42.251809,-71.005409"}, {"RQUA": "42.233391,-71.007153"}, {"RBRA": "42.2078543,-71.0011385"}];
@@ -24,18 +24,20 @@
 				request_w_and_c.send(null);
                 request_w_and_c.onreadystatechange = parse_w_and_c;
 			}
-			
+			/* get Red Line MBTA schedule information */
+
+			function parse_stations()
+			{
+				parsed_stations = JSON.parse(stations);
+			}
 			function parse_sched()
 			{
-				//if (request_sched.status == 0) {
-                 //   alert("File failed to load.");
-                //}
                 if (request_sched.readyState==4 && request_sched.status==200) {
                 	var str = request_sched.responseText;
                 	parsed_sched = JSON.parse(str);
                 }
             }
-
+            /* find location of waldo and carmen */
 			function parse_w_and_c()
 			{
 				if (request_w_and_c.status == 0) {
@@ -51,8 +53,8 @@
 			{
 				if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
 					navigator.geolocation.getCurrentPosition(function(position) {
-						myLat = 42.407457 //position.coords.latitude;
-						myLng = -71.10864 //position.coords.longitude;
+						myLat = position.coords.latitude;
+						myLng = position.coords.longitude;
 						renderMap();
 					});
 				}
@@ -69,16 +71,16 @@
 				map.panTo(me);
 
 				// Create a marker
-				marker = new google.maps.Marker({
+				marker_me = new google.maps.Marker({
 					position: me,
 					title: "Here I Am!"
 				});
-				marker.setMap(map);
+				marker_me.setMap(map);
 
 				// Open info window on click of marker
-				google.maps.event.addListener(marker, 'click', function() {
-					infowindow.setContent(marker.title);
-					infowindow.open(map, marker);
+				google.maps.event.addListener(marker_me, 'click', function() {
+					infowindow.setContent(marker_me.title);
+					infowindow.open(map, marker_me);
 				});
 
 			}
@@ -86,12 +88,12 @@
 			function createMarker(place)
 			{
 				var placeLoc = place.geometry.location;
-				var marker = new google.maps.Marker({
+				var marker_me = new google.maps.Marker({
 					map: map,
 					position: place.geometry.location
 				});
 
-				google.maps.event.addListener(marker, 'click', function() {
+				google.maps.event.addListener(marker_me, 'click', function() {
 					infowindow.close();
 					infowindow.setContent(place.name);
 					infowindow.open(map, this);
