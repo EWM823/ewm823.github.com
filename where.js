@@ -62,10 +62,10 @@
             			title: stations[i][2]
             		});
             		curr_marker.setMap(map);
-            		//google.maps.event.addListener(curr_marker, 'click', function() {
-            		//	infowindow.setContent(curr_marker.title);
-            		//	infowindow.open(map, curr_marker);
-            		//});
+            		google.maps.event.addListener(curr_marker, 'click', function() {
+            			infowindow.setContent(curr_marker.title);
+            			infowindow.open(map, curr_marker);
+            		});
             		
                 }
         	}        
