@@ -67,10 +67,8 @@
             	var curr_marker;           	
 				var curr_coords; 
 				
-				var length = 1;
-				for(var k in parsed_w_and_c) if(parsed_w_and_c.hasOwnProperty(k)) length++;
-            	for (i=0; i < length; i++) {
-					console.log("hey");
+			
+            	for (i=0; i < parsed_w_and_c.length; i++) {
      		       	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, parsed_w_and_c[i].loc.longitude);        		        		
 	           		curr_marker = new google.maps.Marker({
     	       			position: curr_coords,
