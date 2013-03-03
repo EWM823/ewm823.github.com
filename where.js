@@ -67,7 +67,7 @@
             	var curr_marker;           	
 				var curr_coords; 
 				
-				var length = 0;
+				var length = 1;
 				for(var k in parsed_w_and_c) if(parsed_w_and_c.hasOwnProperty(k)) length++;
             	for (i=0; i < length; i++) {
 					console.log("hey");
