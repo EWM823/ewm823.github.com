@@ -24,7 +24,7 @@ var stations_marker = [];
 var w_and_c_marker = [];
 var stations_iw = [];
 var w_and_c_iw = [];
-//var stations_line = [];
+var stations_coords = [];
 			
 function init()
 {
@@ -125,7 +125,6 @@ function plot_stations() {
 			   
 function draw_lines()
 {
-	var stations_coords = [];
 	for (var i in stations) {
 		coord = new google.maps.LatLng(stations[i][0], stations[i][1]);
 		stations_coords.push(coord);
