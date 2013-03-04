@@ -79,7 +79,7 @@ function plot_w_and_c()
 					infowindow.setContent(this.title);
 					infowindow.open(map, this);
  	  			}
-	 	    })(i));
+	 	    }));
 		}
 	}
 }
