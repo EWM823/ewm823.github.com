@@ -114,16 +114,14 @@ function plot_stations() {
    		stations_marker.push(curr_marker);
             		            		
  		stations_marker[i] = curr_marker;  		
-   		google.maps.event.addListener(stations_marker[i], 'click', (function(i) {
-			return function () {
-				
+   		google.maps.event.addListener(stations_marker[i], 'click', (function() {
 				infowindow.close(this.title);
 				infowindow.open(map, this);
 //				stations_iw[i] = new google.maps.InfoWindow({content: stations_marker[i].title});
   // 				stations_iw[i].setContent(stations_marker[i].title);
    	//			stations_iw[i].open(map, stations_marker[i]);
-  			}
-		})(i));
+  			})
+  			
    	}
 }
 			   
