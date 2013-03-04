@@ -75,11 +75,9 @@ function plot_w_and_c()
 	   		w_and_c_marker.push(curr_marker);
            		
 	   		w_and_c_marker[i] = curr_marker;  		
-	   		google.maps.event.addListener(w_and_c_marker[i], 'click', (function(i) {
-				return function () {
-					w_and_c_iw[i] = new google.maps.InfoWindow({content: w_and_c_marker[i].title});
-					w_and_c_iw[i].setContent(w_and_c_marker[i].title);
-  					w_and_c_iw[i].open(map, w_and_c_marker[i]);
+	   		google.maps.event.addListener(w_and_c_marker[i], 'click', (function() {
+					infowindow.setContent(this.title);
+					infowindow.open(map, this);
  	  			}
 	 	    })(i));
 		}
@@ -115,7 +113,7 @@ function plot_stations() {
             		            		
  		stations_marker[i] = curr_marker;  		
    		google.maps.event.addListener(stations_marker[i], 'click', (function() {
-				infowindow.close(this.title);
+				infowindow.setContent(this.title);
 				infowindow.open(map, this);
 //				stations_iw[i] = new google.maps.InfoWindow({content: stations_marker[i].title});
   // 				stations_iw[i].setContent(stations_marker[i].title);
@@ -174,8 +172,8 @@ function renderMap()
 
 	// Open info window on click of marker
 	google.maps.event.addListener(marker_me, 'click', function() {
-		infowindow.setContent(marker_me.title);
-		infowindow.open(map, marker_me);
+		infowindow.setContent(this.title);
+		infowindow.open(map, this);
 	});
 
 }
