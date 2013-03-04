@@ -78,7 +78,6 @@ function plot_w_and_c()
 	   		google.maps.event.addListener(w_and_c_marker[i], 'click', (function() {
 					infowindow.setContent(this.title);
 					infowindow.open(map, this);
- 	  			}
 	 	    }));
 		}
 	}
