@@ -120,9 +120,9 @@ function plot_stations() {
 //				stations_iw[i] = new google.maps.InfoWindow({content: stations_marker[i].title});
   // 				stations_iw[i].setContent(stations_marker[i].title);
    	//			stations_iw[i].open(map, stations_marker[i]);
-  			})
-  			
-   	}
+  			}))
+  	}
+   	
 }
 			   
 function draw_lines()
