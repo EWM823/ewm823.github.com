@@ -25,6 +25,7 @@ var w_and_c_marker = [];
 var stations_iw = [];
 var w_and_c_iw = [];
 var stations_coords = [];
+var infowindow = new google.maps.InfoWindow();
 			
 function init()
 {
@@ -115,10 +116,12 @@ function plot_stations() {
  		stations_marker[i] = curr_marker;  		
    		google.maps.event.addListener(stations_marker[i], 'click', (function(i) {
 			return function () {
-				infowindow.close();
-				stations_iw[i] = new google.maps.InfoWindow({content: stations_marker[i].title});
-   				stations_iw[i].setContent(stations_marker[i].title);
-   				stations_iw[i].open(map, stations_marker[i]);
+				
+				infowindow.close(this.title);
+				infowindow.open(map, this);
+//				stations_iw[i] = new google.maps.InfoWindow({content: stations_marker[i].title});
+  // 				stations_iw[i].setContent(stations_marker[i].title);
+   	//			stations_iw[i].open(map, stations_marker[i]);
   			}
 		})(i));
    	}
