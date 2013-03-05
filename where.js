@@ -75,7 +75,7 @@ function plot_w_and_c()
 	      	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, parsed_w_and_c[i].loc.longitude);        		        		
    			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
-	   			title: parsed_w_and_c[i].name + '\n' + parsed_w_and_c[i].loc.note,
+	   			title: "Waldo",
 	   			icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 	   		});
 	   		curr_marker.setMap(map);
@@ -83,7 +83,7 @@ function plot_w_and_c()
            		
 	   		w_and_c_marker[i] = curr_marker;  		
 	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
-					infowindow.setContent(this.title);
+					infowindow.setContent(parsed_w_and_c[i].name + "<br />" + parsed_w_and_c[i].loc.note);
 					infowindow.open(map, this);
 	 	    });
 		}
