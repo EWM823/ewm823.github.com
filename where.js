@@ -115,6 +115,7 @@ function plot_stations() {
 				updateSTimes();
 				infowindow.setContent("<p>" + this.title + " " + stations[this.title][2] + cl_str + "</p>");
 				infowindow.open(map, this);
+				parseJSON
 				
   			})
   	}
