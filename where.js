@@ -109,8 +109,8 @@ function plot_stations() {
    		stations_marker.push(curr_marker);
  		stations_marker[i] = curr_marker;
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
-				parse_JSON
-				parse_sched
+			//	parse_JSON
+			//	parse_sched
 		 		index_of_station_iw = this.title;
 				updateSTimes();
 				infowindow.setContent("<p>" + this.title + cl_str + "</p>");
