@@ -172,21 +172,14 @@ function renderMap()
 }
 function findClosestStation()
 {
-		shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[0]);
-		index_of_closest = 0;
-	for (var i in stations_coords) {
-
-		if (google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]) < shortest) {
-			shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]);
-			index_of_closest = i;
-		}
-	}
+	shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[0]);
+	closest_station = 'Alewife Station'; //Set equal to First station in array
 	for (var i in stations) {
-			console.log('hey');
-		if (i == index_of_closest) {
-		console.log('hey');
+		var coord = new google.maps.LatLng(stations[i][0], stations[i][1]);
+		if (google.maps.geometry.spherical.computeDistanceBetween(me, coord) < shortest) {
+			shortest = google.maps.geometry.spherical.computeDistanceBetween(me, coord);
 			closest_station = stations[i][2];
 		}
 	}
+	shortest = shortest / 1609.34;
 }
-
