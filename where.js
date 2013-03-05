@@ -27,7 +27,7 @@ var w_and_c_marker = [];	// array of up waldo's and/or/nor carmen's markers
 var stations_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var w_and_c_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var stations_coords = [];	// Array of stations coordinates
-var index_of_closest;		//index of closest T Station
+var closest_station;		//name of closest T Station
 var shortest;
 
 
@@ -159,7 +159,7 @@ function renderMap()
 	// Create a marker	
 	marker_me = new google.maps.Marker({
 		position: me,
-		title: "Here I Am!\n\n Closest Station: " + stations['RALE'][2] + " is " + shortest + "miles from you"
+		title: "Here I Am!\n\n Closest Station: " + closest_station + " is " + shortest + "miles from you"
 	});
 	marker_me.setMap(map);
 
@@ -174,14 +174,14 @@ function findClosestStation()
 {
 	console.log('hey');
 		shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[0]);
-		index_of_closest = 0;
+		closest_station = "Alewife Station";
 	for (var i in stations_coords) {
 	console.log('hey');
 
 		console.log('hey');
 		if (google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]) < shortest) {
 			shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]);
-			index_of_closest = i;
+			closest_station = stations[i][[2];
 		}
 	}
 	console.log('hey');
