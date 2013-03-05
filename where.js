@@ -116,12 +116,7 @@ function plot_stations() {
   	}
 }
 
-function parse_sched() {	
-	if (request_sched.readyState==4 && request_sched.status==200) {
-       	var str = request_sched.responseText;
-       	parsed_sched = JSON.parse(str);
-    }
-}		   
+   
 
 function updateSTimes(curr_marker) {
 	request_sched = new XMLHttpRequest()
@@ -137,6 +132,13 @@ function updateSTimes(curr_marker) {
 	}
 
 }
+
+function parse_sched() {	
+	if (request_sched.readyState==4 && request_sched.status==200) {
+       	var str = request_sched.responseText;
+       	parsed_sched = JSON.parse(str);
+    }
+}		
 			   
 function draw_lines()
 {
