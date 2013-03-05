@@ -192,15 +192,15 @@ function get_w_and_c_distance()
        	var curr_marker;           	
 		var curr_coords; 
 		var distance;							
-    	for (var i in w_and_c_marker) {
+    //	for (var i in w_and_c_marker) {
     	console.log("hey");
-    		var coord = w_and_c_marker[i].position;
-    		distance = google.maps.geometry.spherical.computDistanceBetween(me, coord);
+    		var coord = w_and_c_marker[0].position;
+    		distance = google.maps.geometry.spherical.computeDistanceBetween(me, coord);
     		distance = distance / 1609.34;
     		distance = Math.round(distance*100)/100;
-	   		google.maps.event.addListener(w_and_c_marker[i], 'click', (function() {
+	   		google.maps.event.addListener(w_and_c_marker[0], 'click', (function() {
 					infowindow.setContent(this.title + "<br />" + "Distance from you: " + distance);
 					infowindow.open(map, this);
 	 	    }));
-		}
+		//}
 }
