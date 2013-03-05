@@ -153,7 +153,7 @@ function parse_sched() {
     	    dir_str = parsed_sched[j]["PlatformKey"];
     	    Pkey_str = Pkey_str.substr(0, 4);    	
     	    dir_str = dir_str.substr(4, 1);
-    		if (Pkey_str == index_of_stations_iw) {
+    		if (Pkey_str == index_of_station_iw) {
 
     			if (dir_str == 'N') {
 	    			cl_str += "Northbound at ";
