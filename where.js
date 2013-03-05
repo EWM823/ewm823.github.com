@@ -32,7 +32,7 @@ var closest_station;		//name of closest T Station
 var shortest;
 var w_distance;
 var c_distance;
-
+var distance = [];
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -72,9 +72,9 @@ function plot_w_and_c()
 									
     	for (i=0; i < parsed_w_and_c.length; i++) {
 	      	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, parsed_w_and_c[i].loc.longitude);
-    		distance = google.maps.geometry.spherical.computeDistanceBetween(me, curr_coords);
-    		distance = distance / 1609.34;
-    		distance = Math.round(distance*100)/100;
+    		distance[i] = google.maps.geometry.spherical.computeDistanceBetween(me, curr_coords);
+    		distance[i] = distance[i] / 1609.34;
+    		distance[i] = Math.round(distance[i]*100)/100;
    			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
 	   			title: parsed_w_and_c[i].name + '<br />' + parsed_w_and_c[i].loc.note,
@@ -85,7 +85,7 @@ function plot_w_and_c()
            		
 	   		w_and_c_marker[i] = curr_marker;  		
 	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
-					infowindow.setContent(this.title + "<br />" + "Distance from you: " + distance);
+					infowindow.setContent(this.title + "<br />" + "Distance from you: " + distance[i]);
 					infowindow.open(map, this);
 	 	    });
 		}
