@@ -37,6 +37,7 @@ var carmen_icon = 'assets/carmen.png'
 var waldo_icon = 'assets/waldo.png'
 var parsed_sched
 var cl_str = ' ';
+var index_of_station_iw;
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -106,7 +107,8 @@ function plot_stations() {
    		});
    		curr_marker.setMap(map);	
    		stations_marker.push(curr_marker);
- 		stations_marker[i] = curr_marker;  		
+ 		stations_marker[i] = curr_marker;  	
+ 		var index_of_station_iw = i;	
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
 
 				updateSTimes();
@@ -145,14 +147,14 @@ function parse_sched() {
     
     var temp_str;
     cl_str = "<br/>";
-    for (var i in stations) {
+	var index_of_station_iw;
     	for (var j in parsed_sched) {
 
     	    Pkey_str = parsed_sched[j]["PlatformKey"];
     	    dir_str = parsed_sched[j]["PlatformKey"];
     	    Pkey_str = Pkey_str.substr(0, 4);    	
     	    dir_str = dir_str.substr(4, 1);
-    		if (Pkey_str == stations[i][3]) {
+    		if (Pkey_str == stations[index_of_station_iw][3]) {
 
     			if (dir_str == 'N') {
 	    			cl_str += "Northbound at ";
@@ -164,7 +166,7 @@ function parse_sched() {
 	    		cl_str += "<br/>";
     		}
     	}
-    }
+    
 
 
 }		
