@@ -112,7 +112,7 @@ function plot_stations() {
 		 		index_of_station_iw = this.title;
    				parse_sched
 				updateSTimes();
-				infowindow.setContent("<p>" + this.title + cl_str + "</p>");
+				infowindow.setContent("<p>" + this.title + " " + stations[this.title][2] + cl_str + "</p>");
 				infowindow.open(map, this);
 				
   			})
