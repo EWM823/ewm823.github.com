@@ -31,9 +31,7 @@ var stations_fork1_coords = [];		//Array of stations coordinates on left fork
 var stations_fork2_coords = [];		//Array of stations coordinates on left fork
 var index_of_closest;		//index of closest T Station
 var closest_station;		//name of closest T Station
-var shortest;
-var w_distance;
-var c_distance;
+var shortest;				//shortest distance between me and T station
 var distance = [];
 var carmen_icon = 'assets/carmen.png'
 var waldo_icon = 'assets/waldo.png'
@@ -132,7 +130,11 @@ function updateSTimes(curr_marker) {
 	/* get parsed schedule of T arrivals and departures */
     request_sched.onreadystatechange = parse_sched;		   
 	
-	
+	for (var i in parsed_sched) {
+		if (curr_marker.title == parsed_sched[i][2]) {
+			console.log("success");
+		}
+	}
 
 }
 			   
