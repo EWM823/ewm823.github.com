@@ -189,7 +189,7 @@ function haversine(lat2, long2)
 function findClosestStation()
 {
 	var shortest
-	for (var i in stations_coords) {
+	for (var i in stations) {
 		shortest = haversine(stations[i][0], stations[i][1]);
 		index_of_closest = i;
 		if (haversine(stations[i][0], stations[i][1]) < shortest) {
