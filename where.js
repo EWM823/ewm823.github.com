@@ -97,6 +97,7 @@ function plot_w_and_c()
 function plot_stations() {
 	var curr_marker;           	
 	var curr_station;
+	var count = 0;
     for (var i in stations) {
 					
        	curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		        		
@@ -108,7 +109,7 @@ function plot_stations() {
    		curr_marker.setMap(map);	
    		stations_marker.push(curr_marker);
  		stations_marker[i] = curr_marker;  	
- 		index_of_station_iw = i;	
+ 		index_of_station_iw = count;	
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
 
 				updateSTimes();
@@ -116,6 +117,7 @@ function plot_stations() {
 				infowindow.open(map, this);
 				
   			})
+  		count++;
   	}
 }
 
