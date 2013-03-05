@@ -165,7 +165,7 @@ function renderMap()
 
 	// Open info window on click of marker
 	google.maps.event.addListener(marker_me, 'click', function() {
-		infowindow.setContent("<p>" + "You are here!" + "<br />" + "Closest Station: " + closest_station + " is " + shortest + " miles from you." + "</p>");
+		infowindow.setContent("You are here!" + "<br />" + "Closest Station: " + closest_station + " is " + shortest + " miles from you.");
 		infowindow.open(map, this);
 	});
 
