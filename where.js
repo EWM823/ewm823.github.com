@@ -147,7 +147,7 @@ function parse_sched() {
     
     var temp_str;
     cl_str = "<br/>";
-	var index_of_station_iw;
+	
     	for (var j in parsed_sched) {
 
     	    Pkey_str = parsed_sched[j]["PlatformKey"];
