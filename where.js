@@ -181,7 +181,7 @@ function findClosestStation()
 		console.log('hey');
 		if (google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]) < shortest) {
 			shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]);
-			closest_station = stations[i][[2]
+			closest_station = stations[i][2];
 		}
 	}
 	console.log('hey');
