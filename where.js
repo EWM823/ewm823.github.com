@@ -102,7 +102,7 @@ function plot_stations() {
 		curr_marker = new google.maps.Marker({
     		position: curr_station,
     		title: stations[i][3],
-   			icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+   			icon: 'http://maps.google.com/mapfiles/ms/icons/red-pushpin.png'
    		});
    		curr_marker.setMap(map);	
    		stations_marker.push(curr_marker);
