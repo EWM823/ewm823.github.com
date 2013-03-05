@@ -159,13 +159,13 @@ function renderMap()
 	// Create a marker	
 	marker_me = new google.maps.Marker({
 		position: me,
-		title: "Here I Am!\n\n Closest Station: " + closest_station + " is " + shortest + "miles from you"
+		title: "Here I Am!"
 	});
 	marker_me.setMap(map);
 
 	// Open info window on click of marker
 	google.maps.event.addListener(marker_me, 'click', function() {
-		infowindow.setContent(this.title);
+		infowindow.setContent(<p> + "Closest Station: " + closest_station + " is " + shortest + " miles from you." </p>);
 		infowindow.open(map, this);
 	});
 
@@ -182,4 +182,5 @@ function findClosestStation()
 		}
 	}
 	shortest = shortest / 1609.34;
+	shortest = Math.round(shortest*100)/100;
 }
