@@ -33,6 +33,10 @@ var shortest;
 var w_distance;
 var c_distance;
 var distance = [];
+var carmen_icon = 'assets/carmen.png'
+var waldo_icon = 'assets/waldo.png'
+
+
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -75,10 +79,17 @@ function plot_w_and_c()
     		distance[i] = google.maps.geometry.spherical.computeDistanceBetween(me, curr_coords);
     		distance[i] = distance[i] / 1609.34;
     		distance[i] = Math.round(distance[i]*100)/100;
-   			curr_marker = new google.maps.Marker({
+    		if (parsed_w_and_c[i].name == "Carmen Sandiego") {
+    			img = carmen_icon;
+    		}
+    		if (parsed_w_and_c[i].name == "Waldo") {
+    			img = waldo_icon;
+    		}
+    			
+       			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
 	   			title: parsed_w_and_c[i].name + '\n' + parsed_w_and_c[i].loc.note,
-	   			icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+	   			icon: img
 	   		});
 	   		curr_marker.setMap(map);
 	   		w_and_c_marker.push(curr_marker);
