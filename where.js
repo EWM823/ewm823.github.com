@@ -28,11 +28,7 @@ var stations_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var w_and_c_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var stations_coords = [];	// Array of stations coordinates
 var index_of_closest;		//index of closest T Station
-var lat1;
-var long1;
-var lat2;
-var long2;
-			
+
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -174,34 +170,17 @@ function renderMap()
 	});
 
 }
-function haversine(stations_lat, stations_long)
-{
-	lat1 = myLat;
-	lon1 = myLng;
-	lat2 = stations_lat;
-	lon2 = stations_long;
-	var R = 3959; // mi
-	var dLat = (Math.abs(lat2-lat1)).toRad();
-	var dLon = (Math.abs(lon2-lon1)).toRad();
-	var lat1 = lat1.toRad();
-	var lat2 = lat2.toRad();
-
-	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-	        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-	var d = R * c;
-}
 function findClosestStation()
 {
 	var shortest
+	
 	for (var i in stations) {
-		
-//		shortest = haversine(stations[i][0], stations[i][1]);
+		shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]);
 		index_of_closest = i;
-		//if (haversine(stations[i][0], stations[i][1]) < shortest) {
-		//	shortest = haversine(stations[i][0], stations[i][1]);
-		//	index_of_closest = i;
-		//}
+		if (google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]) < shortest) {
+			shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]);
+			index_of_closest = i;
+		}
 	}
 	return shortest;
 }
