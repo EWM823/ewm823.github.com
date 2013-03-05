@@ -79,7 +79,7 @@ function plot_w_and_c()
     		distance = Math.round(distance*100)/100;
    			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
-	   			title: "Carmen Sandiego"
+	   			title: "Carmen Sandiego",
 	   			icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 	   		});
 	   		curr_marker.setMap(map);
