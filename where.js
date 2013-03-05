@@ -36,7 +36,6 @@ var c_distance;
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	getMyCoordinates()
 	request_w_and_c.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
 	request_w_and_c.send(null);
 	/* get parsed locations/info of waldo and carmen sandiego */
@@ -48,7 +47,7 @@ function init()
     plot_stations()
     draw_lines()
     getMyLocation()
-//    get_w_and_c_distance()
+    get_w_and_c_distance()
 }
 			
 /* get Red Line MBTA schedule information for JSON format*/
@@ -74,12 +73,9 @@ function plot_w_and_c()
 									
     	for (i=0; i < parsed_w_and_c.length; i++) {
 	      	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, parsed_w_and_c[i].loc.longitude);        		        		
-  			distance = google.maps.geometry.spherical.computeDistanceBetween(me, curr_coords);
-    		distance = distance / 1609.34;
-    		distance = Math.round(distance*100)/100;
    			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
-	   			title: "Carmen Sandiego",
+	   			title: parsed_w_and_c[i].name + '\n' + parsed_w_and_c[i].loc.note,
 	   			icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 	   		});
 	   		curr_marker.setMap(map);
@@ -87,7 +83,7 @@ function plot_w_and_c()
            		
 	   		w_and_c_marker[i] = curr_marker;  		
 	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
-					infowindow.setContent(parsed_w_and_c[i].name + '<br />' + parsed_w_and_c[i].loc.note + '<br />' + '<br />' + "Distance from you: " + distance);
+					infowindow.setContent(this.title);
 					infowindow.open(map, this);
 	 	    });
 		}
