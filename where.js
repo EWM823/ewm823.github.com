@@ -135,7 +135,7 @@ function draw_lines()
 		coord = new google.maps.LatLng(stations[i][0], stations[i][1]);
 		stations_coords.push(coord);
 	}
-	for (i = 0; i < 13; i++) {
+	for (i = 0; i < 17; i++) {
 		stations_fork1_coords.push(stations_coords[i]);
 	}
 	var polyOptions = new google.maps.Polyline({
