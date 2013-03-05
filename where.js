@@ -173,8 +173,8 @@ function renderMap()
 function findClosestStation()
 {
 	console.log('hey');
-		shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]);
-		index_of_closest = i;
+		shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[0]);
+		index_of_closest = 0;
 	for (var i in stations_coords) {
 	console.log('hey');
 
