@@ -154,7 +154,7 @@ function renderMap()
 
 	// Find distance between me and closest T Station
 	console.log('hey1');
-	findClosestStation
+	findClosestStation()
 	
 	// Create a marker	
 	marker_me = new google.maps.Marker({
