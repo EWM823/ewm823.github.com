@@ -86,7 +86,7 @@ function plot_w_and_c()
            		
 	   		w_and_c_marker[i] = curr_marker;  		
 	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
-					infowindow.setContent(this.title) + "<br />" + "Distance from you: " + distance;
+					infowindow.setContent(this.title + "<br />" + "Distance from you: " + distance);
 					infowindow.open(map, this);
 	 	    });
 		}
@@ -182,7 +182,7 @@ function renderMap()
 
 	// Open info window on click of marker
 	google.maps.event.addListener(marker_me, 'click', function() {
-		infowindow.setContent("You are here!" + "<br />" + "Closest Station: " + closest_station + " is " + shortest + " miles from you.");
+		infowindow.setContent("You are here!" + <br /> + "Closest Station: " + closest_station + " is " + shortest + " miles from you.");
 		infowindow.open(map, this);
 	});
 
