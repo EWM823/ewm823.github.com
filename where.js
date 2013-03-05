@@ -35,7 +35,7 @@ var shortest;				//shortest distance between me and T station
 var distance = [];
 var carmen_icon = 'assets/carmen.png'
 var waldo_icon = 'assets/waldo.png'
-var parsed_sched;
+
 
 function init()
 {
@@ -51,13 +51,6 @@ function init()
 }
 			
 /* get Red Line MBTA schedule information for JSON format*/
-function parse_sched()
-{
-	if (request_sched.readyState==4 && request_sched.status==200) {
-       	var str = request_sched.responseText;
-       	parsed_sched = JSON.parse(str);
-    }
-}
 /* find location of waldo and carmen from JSON format*/
 function plot_w_and_c()
 {
@@ -122,7 +115,14 @@ function plot_stations() {
   			})
   	}
 }
-		   
+
+function parse_sched() {	
+	if (request_sched.readyState==4 && request_sched.status==200) {
+       	var str = request_sched.responseText;
+       	parsed_sched = JSON.parse(str);
+    }
+}		   
+
 function updateSTimes(curr_marker) {
 	request_sched = new XMLHttpRequest()
 	request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
