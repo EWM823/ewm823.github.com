@@ -77,7 +77,7 @@ function plot_w_and_c()
     		distance[i] = Math.round(distance[i]*100)/100;
    			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
-	   			title: parsed_w_and_c[i].name + '<br />' + parsed_w_and_c[i].loc.note,
+	   			title: parsed_w_and_c[i].name + '\n' + parsed_w_and_c[i].loc.note,
 	   			icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 	   		});
 	   		curr_marker.setMap(map);
