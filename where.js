@@ -42,8 +42,8 @@ function init()
 	request_sched.send(null);
 	/* get parsed schedule of T arrivals and departures */
     request_sched.onreadystatechange = parse_sched;	
-	getMyLocation();
     plot_stations()
+    getMyLocation();
     draw_lines()
 }
 			
