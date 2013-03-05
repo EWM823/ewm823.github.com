@@ -97,7 +97,6 @@ function plot_w_and_c()
 function plot_stations() {
 	var curr_marker;           	
 	var curr_station;
-	var count = 0;
     for (var i in stations) {
 					
        	curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		        		
@@ -109,7 +108,7 @@ function plot_stations() {
    		curr_marker.setMap(map);	
    		stations_marker.push(curr_marker);
  		stations_marker[i] = curr_marker;  	
- 		index_of_station_iw = count;	
+ 		index_of_station_iw = i;	
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
 
 				updateSTimes();
@@ -117,7 +116,6 @@ function plot_stations() {
 				infowindow.open(map, this);
 				
   			})
-  		count++;
   	}
 }
 
@@ -149,14 +147,13 @@ function parse_sched() {
     
     var temp_str;
     cl_str = "<br/>";
-	
     	for (var j in parsed_sched) {
 
     	    Pkey_str = parsed_sched[j]["PlatformKey"];
     	    dir_str = parsed_sched[j]["PlatformKey"];
     	    Pkey_str = Pkey_str.substr(0, 4);    	
     	    dir_str = dir_str.substr(4, 1);
-    		if (Pkey_str == stations[index_of_station_iw][3]) {
+    		if (Pkey_str == index_of_stations_iw) {
 
     			if (dir_str == 'N') {
 	    			cl_str += "Northbound at ";
