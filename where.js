@@ -77,7 +77,7 @@ function plot_w_and_c()
     		}
        			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
-	   			title: parsed_w_and_c[i].name + '\n' + parsed_w_and_c[i].loc.note + '\n' + "Distance from you: " + distance[i],
+	   			title: parsed_w_and_c[i].name + '\n' + parsed_w_and_c[i].loc.note + '\n' + "Distance from you: " + distance[i] + "miles.",
 	   			icon: img
 	   		});
 	   		curr_marker.setMap(map);
@@ -143,20 +143,17 @@ function parse_sched() {
        	var str = request_sched.responseText;
        	parsed_sched = JSON.parse(str);
     }
-    console.log("success");
     
     var temp_str;
     cl_str = "<br/>";
     for (var i in stations) {
     	for (var j in parsed_sched) {
-    		    console.log("success2");
 
     	    Pkey_str = parsed_sched[j]["PlatformKey"];
     	    dir_str = parsed_sched[j]["PlatformKey"];
     	    Pkey_str = Pkey_str.substr(0, 4);    	
     	    dir_str = dir_str.substr(4, 1);
     		if (Pkey_str == stations[i][3]) {
-    		    console.log("success3");
 
     			if (dir_str == 'N') {
 	    			cl_str += "Northbound at ";
