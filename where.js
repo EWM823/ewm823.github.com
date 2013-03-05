@@ -116,7 +116,15 @@ function plot_stations() {
   	}
 }
 
+   /*
+   What I want to do: For each infowindow on the station that is opened,
+   I want to get an XMLHttpRequest and parse it. Then, I want to get the information of
    
+   
+   
+      
+   
+     */
 
 function updateSTimes(curr_marker) {
 	request_sched = new XMLHttpRequest()
