@@ -109,8 +109,9 @@ function plot_stations() {
    		stations_marker.push(curr_marker);
  		stations_marker[i] = curr_marker;
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
+				parse_JSON
+				parse_sched
 		 		index_of_station_iw = this.title;
-   				parse_sched
 				updateSTimes();
 				infowindow.setContent("<p>" + this.title + cl_str + "</p>");
 				infowindow.open(map, this);
@@ -135,15 +136,17 @@ function updateSTimes() {
 	request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
 	request_sched.send(null);
 	/* get parsed schedule of T arrivals and departures */
-    request_sched.onreadystatechange = parse_sched		   
-	
+    request_sched.onreadystatechange = parse_JSON	   
+	parse_sched
 }
-
-function parse_sched() {	
-	if (request_sched.status==200) {
+function parse_JSON() {
+	if (request_sched.readyState==4 && request_sched.status==200) {
        	var str = request_sched.responseText;
        	parsed_sched = JSON.parse(str);
     }
+}
+function parse_sched() {	
+	parse_JSON()
     
     var temp_str;
     cl_str = "<br/>";
