@@ -139,8 +139,9 @@ function parse_sched(curr_marker) {
 	if (request_sched.readyState==4 && request_sched.status==200) {
        	var str = request_sched.responseText;
        	parsed_sched = JSON.parse(str);
-    }
+    
     console.log("success");
+    }
     for (var i in parsed_sched) {
     	if (curr_marker.title = parsed_sched[i][2]) {
     		console.log("sucess");
