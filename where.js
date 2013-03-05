@@ -24,8 +24,6 @@ var places;
 var stations = {"RALE": [42.395428, -71.142483, "Alewife Station", "RALE"],"RDAV": [42.39674, -71.121815, "Davis Square", "RDAV"],"RPOR": [42.3884, -71.119149, "Porter Square", "RPOR"],"RHAR": [42.373362, -71.118956, "Harvard Square", "RHAR"], "RCEN": [42.365486, -71.103802, "Central Square", "RCEN"],"RKEN": [42.36249079, -71.08617653, "Kendall/MIT", "RKEN"],"RMGH": [42.361166, -71.070628, "Charles/MGH", "RMGH"],"RPRK": [42.35639457, -71.0624242,"Park Street", "RPRK"],"RDTC": [42.355518, -71.060225, "Downtown Crossing", "RDTC"],"RSOU": [42.352271, -71.055242, "South Station", "RSOU"],"RBRO": [42.342622, -71.056967, "Broadway", "RBRO"],"RAND": [42.330154, -71.057655, "Andrew", "RAND"],"RJFK": [42.320685, -71.052391, "JFK/UMass", "RJFK"],"RSAV": [42.31129, -71.053331, "Savin Hill", "RSAV"],"RFIE": [42.300093, -71.061667, "Fields Corner", "RFIE"],"RSHA": [42.29312583, -71.06573796, "Shawmut", "RSHA"],"RASH":[42.284652, -71.064489,"Ashmont", "RASH"],"RNQU": [42.275275, -71.029583, "North Quincy", "RNQU"],"RWOL": [42.2665139, -71.0203369,"Wollaston", "RWOL"],"RQUC": [42.251809, -71.005409, "Quincy Center", "RQUC"],"RQUA":[42.233391, -71.007153, "Quincy Adams", "RQUA"],"RBRA": [42.2078543, -71.0011385, "Braintree", "RBRA"]};
 var stations_marker = [];	//array of station markers
 var w_and_c_marker = [];	// array of up waldo's and/or/nor carmen's markers
-var stations_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
-var w_and_c_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var stations_coords = [];	// Array of stations coordinates
 var stations_fork1_coords = [];		//Array of stations coordinates on left fork
 var stations_fork2_coords = [];		//Array of stations coordinates on left fork
@@ -38,6 +36,8 @@ var waldo_icon = 'assets/waldo.png'
 var parsed_sched
 var cl_str = ' ';
 var index_of_station_iw;
+
+
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -108,9 +108,8 @@ function plot_stations() {
    		curr_marker.setMap(map);	
    		stations_marker.push(curr_marker);
  		stations_marker[i] = curr_marker;  	
- 		index_of_station_iw = i;	
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
-
+		 		index_of_station_iw = i;	
 				updateSTimes();
 				infowindow.setContent("<p>" + this.title + cl_str + "</p>");
 				infowindow.open(map, this);
@@ -153,7 +152,7 @@ function parse_sched() {
     	    dir_str = parsed_sched[j]["PlatformKey"];
     	    Pkey_str = Pkey_str.substr(0, 4);    	
     	    dir_str = dir_str.substr(4, 1);
-    		if (Pkey_str == index_of_station_iw) {
+    		if (Pkey_str == stations[index_of_station_iw][3]) {
 
     			if (dir_str == 'N') {
 	    			cl_str += "Northbound at ";
