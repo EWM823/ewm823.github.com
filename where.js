@@ -156,6 +156,7 @@ function renderMap()
 
 
 	// Find distance between me and closest T Station
+	console.log('hey1');
 	findClosestStation
 	
 	// Create a marker	
@@ -174,10 +175,12 @@ function renderMap()
 }
 function findClosestStation()
 {
-	
+	console.log('hey');
 	for (var i in stations_coords) {
+	console.log('hey');
 		shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]);
 		index_of_closest = i;
+		console.log('hey');
 		if (google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]) < shortest) {
 			shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]);
 			index_of_closest = i;
