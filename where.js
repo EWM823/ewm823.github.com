@@ -115,7 +115,7 @@ function plot_stations() {
 				updateSTimes();
 				infowindow.setContent("<p>" + this.title + " " + stations[this.title][2] + cl_str + "</p>");
 				infowindow.open(map, this);
-				parseJSON
+				
 				
   			})
   	}
@@ -156,7 +156,7 @@ function parse_sched() {
     var temp_str;
     cl_str = "<br/>";
     	for (var j in parsed_sched) {
-
+			time_str = parsed_sched[j]["Time"];
     	    Pkey_str = parsed_sched[j]["PlatformKey"];
     	    dir_str = parsed_sched[j]["PlatformKey"];
     	    Pkey_str = Pkey_str.substr(0, 4);    	
@@ -169,7 +169,8 @@ function parse_sched() {
 	    		else if (dir_str == 'S') {
 	    			cl_str += "Southbound at ";
 	    		}
-	    		cl_str += parsed_sched[j]["Time"];
+	    		
+	    		cl_str += time_str;
 	    		cl_str += "<br/>";
     		}
     	}
