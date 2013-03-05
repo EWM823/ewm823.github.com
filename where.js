@@ -131,9 +131,9 @@ function updateSTimes(curr_marker) {
     request_sched.onreadystatechange = parse_sched;		   
 	
 	for (var i in parsed_sched) {
-		if (curr_marker.title == parsed_sched[i][2]) {
+//		if (curr_marker.title == parsed_sched[i][2]) {
 			console.log("success");
-		}
+//		}
 	}
 
 }
