@@ -107,7 +107,7 @@ function plot_stations() {
    		curr_marker.setMap(map);	
    		stations_marker.push(curr_marker);
             		            		
- 		temp_marker = curr_marker;  		
+ 		stations_marker[i] = curr_marker;  		
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
 				updateSTimes(stations_marker[i])
 				infowindow.setContent(this.title);
