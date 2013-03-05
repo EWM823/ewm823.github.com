@@ -95,7 +95,7 @@ function plot_w_and_c()
 	   		w_and_c_marker.push(curr_marker);
            		
 	   		w_and_c_marker[i] = curr_marker;  		
-	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
+	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function(distance) {
 					infowindow.setContent(this.title + "<br />" + "Distance from you: " + distance[i]);
 					infowindow.open(map, this);
 	 	    });
