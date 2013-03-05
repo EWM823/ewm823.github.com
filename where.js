@@ -32,7 +32,7 @@ var closest_station;		//name of closest T Station
 var shortest;
 var w_distance;
 var c_distance;
-var distance = [];
+var distance;
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -85,11 +85,19 @@ function plot_w_and_c()
            		
 	   		w_and_c_marker[i] = curr_marker;
 	   		if (w_and_c_marker[i].name == "Carmen Sandiego") {
-	   			w_distance = distance;
-	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
-					infowindow.setContent(this.title + "<br />" + "Distance from you: " + distance);
+	   			c_distance = distance;
+	   			google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
+					infowindow.setContent(this.title + "<br />" + "Distance from you: " + c_distance);
 					infowindow.open(map, this);
 	 	    });
+	   		}
+	   		if (w_and_c_marker[i].name == "Waldo") {
+	   			w_distance = distance;   		
+	   			google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
+						infowindow.setContent(this.title + "<br />" + "Distance from you: " + w_distance);
+						infowindow.open(map, this);
+		 	    });
+	 	    }
 		}
 	}
 }
