@@ -108,7 +108,7 @@ function plot_stations() {
    		stations_marker.push(curr_marker);
  		stations_marker[i] = curr_marker;  		
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
-				updateSTimes(stations_marker[i])
+				updateSTimes()
 				infowindow.setContent(this.title);
 				infowindow.open(map, this);
 				
@@ -127,7 +127,7 @@ function plot_stations() {
    
      */
 
-function updateSTimes(curr_marker) {
+function updateSTimes() {
 	request_sched = new XMLHttpRequest()
 	request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
 	request_sched.send(null);
