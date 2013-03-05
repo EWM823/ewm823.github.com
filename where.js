@@ -108,9 +108,9 @@ function plot_stations() {
    		curr_marker.setMap(map);	
    		stations_marker.push(curr_marker);
  		stations_marker[i] = curr_marker;
- 		index_of_station_iw = curr_marker.title;	
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
-		 		//index_of_station_iw = this.title;	
+   				parse_sched
+		 		index_of_station_iw = this.title;	
 				updateSTimes();
 				infowindow.setContent("<p>" + this.title + cl_str + "</p>");
 				infowindow.open(map, this);
@@ -165,9 +165,6 @@ function parse_sched() {
 	    		cl_str += "<br/>";
     		}
     	}
-    
-
-
 }		
 			   
 function draw_lines()
