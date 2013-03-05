@@ -75,7 +75,7 @@ function plot_w_and_c()
 	      	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, parsed_w_and_c[i].loc.longitude);        		        		
    			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
-	   			title: "Waldo",
+	   			title: parsed_w_and_c[i].name + '<br />' + parsed_w_and_c[i].loc.note,
 	   			icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 	   		});
 	   		curr_marker.setMap(map);
@@ -83,7 +83,7 @@ function plot_w_and_c()
            		
 	   		w_and_c_marker[i] = curr_marker;  		
 	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
-					infowindow.setContent(parsed_w_and_c[i].name + "<br />" + parsed_w_and_c[i].loc.note);
+					infowindow.setContent(this.title);
 					infowindow.open(map, this);
 	 	    });
 		}
@@ -97,6 +97,9 @@ function plot_stations() {
     for (var i in stations) {
 					
        	curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		        		
+		distance = google.maps.geometry.spherical.computeDistanceBetween(me, curr_coords);
+    	distance = distance / 1609.34;
+    	distance = Math.round(distance*100)/100;
 		curr_marker = new google.maps.Marker({
     		position: curr_station,
     		title: stations[i][2],
@@ -107,7 +110,7 @@ function plot_stations() {
             		            		
  		stations_marker[i] = curr_marker;  		
    		google.maps.event.addListener(stations_marker[i], 'click', (function() {
-				infowindow.setContent(this.title);
+				infowindow.setContent(this.title + "<br />" + "Distance from you is: " + distance);
 				infowindow.open(map, this);
   			}))
   	}
