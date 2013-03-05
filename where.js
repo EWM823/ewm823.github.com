@@ -5,7 +5,7 @@ var carmen_coord;		//struct of carmen's LatLng
 var waldo_marker;		//marker of waldo's location
 var carmen_marker;		//marker of carmen's location
 
-var request_sched = new XMLHttpRequest();
+var request_sched;
 var request_w_and_c = new XMLHttpRequest();
 
 var parsed_w_and_c;		//parsed JSON object for waldo and carmen
@@ -47,10 +47,6 @@ function init()
 	request_w_and_c.send(null);
 	/* get parsed locations/info of waldo and carmen sandiego */
     request_w_and_c.onreadystatechange = plot_w_and_c;
-	request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
-	request_sched.send(null);
-	/* get parsed schedule of T arrivals and departures */
-    request_sched.onreadystatechange = parse_sched;	
     plot_stations()
     draw_lines()
     getMyLocation()
@@ -121,12 +117,23 @@ function plot_stations() {
    		stations_marker.push(curr_marker);
             		            		
  		stations_marker[i] = curr_marker;  		
-   		google.maps.event.addListener(stations_marker[i], 'click', (function() {
+   		google.maps.event.addListener(stations_marker[i], 'click', function() {
+				updateSTimes(stations_marker[i])
 				infowindow.setContent(this.title);
 				infowindow.open(map, this);
-  			}))
+  			})
   	}
-   	
+}
+		   
+function updateSTimes(curr_marker) {
+	request_sched = new XMLHttpRequest()
+	request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
+	request_sched.send(null);
+	/* get parsed schedule of T arrivals and departures */
+    request_sched.onreadystatechange = parse_sched;		   
+	
+	
+
 }
 			   
 function draw_lines()
