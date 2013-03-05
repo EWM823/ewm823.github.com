@@ -193,6 +193,7 @@ function get_w_and_c_distance()
 		var curr_coords; 
 		var distance;							
     	for (var i in parsed_w_and_c) {
+    	console.log("hey");
     		var coord = w_and_c_marker[i].position;
     		distance = google.maps.geometry.spherical.computDistanceBetween(me, coord);
     		distance = distance / 1609.34;
