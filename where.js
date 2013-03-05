@@ -202,7 +202,7 @@ function findClosestStation()
 	shortest = Math.round(shortest*100)/100;
 }
 
-/*function get_w_and_c_distance()
+/* function get_w_and_c_distance()
 {
        	var curr_marker;           	
 		var curr_coords; 
