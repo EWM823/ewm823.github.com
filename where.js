@@ -31,15 +31,15 @@ var stations_coords = [];	// Array of stations coordinates
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	getMyLocation();
-	request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
-	request_sched.send(null);
-	/* get parsed schedule of T arrivals and departures */
-    request_sched.onreadystatechange = parse_sched;
 	request_w_and_c.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
 	request_w_and_c.send(null);
 	/* get parsed locations/info of waldo and carmen sandiego */
     request_w_and_c.onreadystatechange = plot_w_and_c;
+	request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
+	request_sched.send(null);
+	/* get parsed schedule of T arrivals and departures */
+    request_sched.onreadystatechange = parse_sched;	
+	getMyLocation();
     plot_stations()
     draw_lines()
 }
@@ -83,9 +83,11 @@ function plot_w_and_c()
 		}
 	}
 }
-function haversine()
+function haversine(coord)
 {
-	var R = 6371; // km
+	lat1 = me[0]
+	long1 = me[1]
+	var R = 3959; // mi
 	var dLat = (lat2-lat1).toRad();
 	var dLon = (lon2-lon1).toRad();
 	var lat1 = lat1.toRad();
@@ -163,7 +165,11 @@ function renderMap()
 	// Update map and go there...
 	map.panTo(me);
 
-	// Create a marker
+
+	// Find distance between me and closest T Station
+	var shortest distance;
+	
+	// Create a marker	
 	marker_me = new google.maps.Marker({
 		position: me,
 		title: "Here I Am!"
@@ -178,17 +184,3 @@ function renderMap()
 
 }
 
-function createMarker(place)
-{
-	var placeLoc = place.geometry.location;
-	var marker_me = new google.maps.Marker({
-		map: map,
-		position: place.geometry.location
-	});
-
-	google.maps.event.addListener(marker_me, 'click', function() {
-		infowindow.close();
-		infowindow.setContent(place.name);
-		infowindow.open(map, this);
-	});
-}
