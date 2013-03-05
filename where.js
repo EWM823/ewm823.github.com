@@ -77,7 +77,7 @@ function plot_w_and_c()
     		}
        			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
-	   			title: parsed_w_and_c[i].name + '\n' + parsed_w_and_c[i].loc.note + '\n' + "Distance from you: " + distance[i] + "miles.",
+	   			title: parsed_w_and_c[i].name + '\n' + parsed_w_and_c[i].loc.note + '\n' + "Distance from you: " + distance[i] + " miles.",
 	   			icon: img
 	   		});
 	   		curr_marker.setMap(map);
