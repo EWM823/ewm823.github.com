@@ -72,7 +72,10 @@ function plot_w_and_c()
 		var curr_coords; 
 									
     	for (i=0; i < parsed_w_and_c.length; i++) {
-	      	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, parsed_w_and_c[i].loc.longitude);        		        		
+	      	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, parsed_w_and_c[i].loc.longitude);
+    		distance = google.maps.geometry.spherical.computeDistanceBetween(me, curr_coords);
+    		distance = distance / 1609.34;
+    		distance = Math.round(distance*100)/100;
    			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
 	   			title: parsed_w_and_c[i].name + '<br />' + parsed_w_and_c[i].loc.note,
@@ -83,7 +86,7 @@ function plot_w_and_c()
            		
 	   		w_and_c_marker[i] = curr_marker;  		
 	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
-					infowindow.setContent(this.title);
+					infowindow.setContent(this.title) + "<br />" + "Distance from you: " + distance;
 					infowindow.open(map, this);
 	 	    });
 		}
@@ -97,9 +100,6 @@ function plot_stations() {
     for (var i in stations) {
 					
        	curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		        		
-		distance = google.maps.geometry.spherical.computeDistanceBetween(me, curr_coords);
-    	distance = distance / 1609.34;
-    	distance = Math.round(distance*100)/100;
 		curr_marker = new google.maps.Marker({
     		position: curr_station,
     		title: stations[i][2],
@@ -110,7 +110,7 @@ function plot_stations() {
             		            		
  		stations_marker[i] = curr_marker;  		
    		google.maps.event.addListener(stations_marker[i], 'click', (function() {
-				infowindow.setContent(this.title + "<br />" + "Distance from you is: " + distance);
+				infowindow.setContent(this.title);
 				infowindow.open(map, this);
   			}))
   	}
@@ -202,7 +202,7 @@ function findClosestStation()
 	shortest = Math.round(shortest*100)/100;
 }
 
-function get_w_and_c_distance()
+/*function get_w_and_c_distance()
 {
        	var curr_marker;           	
 		var curr_coords; 
@@ -218,4 +218,4 @@ function get_w_and_c_distance()
 					infowindow.open(map, this);
 	 	    }));
 		//}
-}
+}/*
