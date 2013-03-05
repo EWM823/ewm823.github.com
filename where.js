@@ -85,18 +85,17 @@ function plot_w_and_c()
     		if (parsed_w_and_c[i].name == "Waldo") {
     			img = waldo_icon;
     		}
-    			
        			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
-	   			title: parsed_w_and_c[i].name + '\n' + parsed_w_and_c[i].loc.note,
+	   			title: parsed_w_and_c[i].name + '\n' + parsed_w_and_c[i].loc.note + '\n' + "Distance from you: " + distance[i],
 	   			icon: img
 	   		});
 	   		curr_marker.setMap(map);
 	   		w_and_c_marker.push(curr_marker);
            		
 	   		w_and_c_marker[i] = curr_marker;  		
-	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function(distance) {
-					infowindow.setContent(this.title + "<br />" + "Distance from you: " + distance[i]);
+	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
+					infowindow.setContent(this.title);
 					infowindow.open(map, this);
 	 	    });
 		}
