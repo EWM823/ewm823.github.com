@@ -175,7 +175,7 @@ function renderMap()
 function findClosestStation()
 {
 	
-	for (var i in stations) {
+	for (var i in stations_coords) {
 		shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]);
 		index_of_closest = i;
 		if (google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]) < shortest) {
