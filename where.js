@@ -159,13 +159,13 @@ function renderMap()
 	// Create a marker	
 	marker_me = new google.maps.Marker({
 		position: me,
-		title: "Here I Am!"
+		title: <p> + "You are here!" + <br /> + <p> + "Closest Station: " + closest_station + " is " + shortest + " miles from you." </p>
 	});
 	marker_me.setMap(map);
 
 	// Open info window on click of marker
 	google.maps.event.addListener(marker_me, 'click', function() {
-		infowindow.setContent(<p> + "Closest Station: " + closest_station + " is " + shortest + " miles from you." </p>);
+		infowindow.setContent();
 		infowindow.open(map, this);
 	});
 
