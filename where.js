@@ -28,6 +28,8 @@ var stations_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var w_and_c_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var stations_coords = [];	// Array of stations coordinates
 var index_of_closest;		//index of closest T Station
+var shortest;
+
 
 function init()
 {
@@ -154,12 +156,12 @@ function renderMap()
 
 
 	// Find distance between me and closest T Station
-	var closest = findClosestStation()
+	findClosestStation()
 	
 	// Create a marker	
 	marker_me = new google.maps.Marker({
 		position: me,
-		title: "Here I Am!\n\n Closest Station: " + stations[index_of_closest][3] + " is " + closest + "miles from you"
+		title: "Here I Am!\n\n Closest Station: " + stations[index_of_closest][3] + " is " + shortest + "miles from you"
 	});
 	marker_me.setMap(map);
 
@@ -172,7 +174,6 @@ function renderMap()
 }
 function findClosestStation()
 {
-	var shortest
 	
 	for (var i in stations) {
 		shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[i]);
