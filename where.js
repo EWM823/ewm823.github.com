@@ -145,7 +145,7 @@ function parse_sched() {
     console.log("success");
     }
     for (var i in parsed_sched) {
-    	if (curr_marker.title == parsed_sched[i][2]) {
+    	if (temp_marker.title == parsed_sched[i][2]) {
     		console.log("sucess");
     	}
     }
