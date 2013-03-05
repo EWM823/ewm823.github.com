@@ -109,7 +109,7 @@ function plot_stations() {
  		stations_marker[i] = curr_marker;  		
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
 				updateSTimes();
-				infowindow.setContent(this.title + cl_str);
+				infowindow.setContent("<p>" + this.title + cl_str + "</p">);
 				infowindow.open(map, this);
 				
   			})
@@ -144,7 +144,7 @@ function parse_sched() {
     console.log("success");
     
     var temp_str;
-    cl_str = "<br />";
+   // cl_str = "<br />";
     for (var i in stations) {
     	for (var j in parsed_sched) {
     		    console.log("success2");
@@ -163,7 +163,7 @@ function parse_sched() {
 	    			cl_str += "Southbound at ";
 	    		}
 	    		cl_str += parsed_sched[j]["Time"];
-	    		cl_str += "<br />";
+//	    		cl_str += "<br />";
     		}
     	}
     }
