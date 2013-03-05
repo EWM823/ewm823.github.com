@@ -129,7 +129,6 @@ function plot_stations() {
      */
 
 function updateSTimes() {
-	cl_str = ' ';
 	request_sched = new XMLHttpRequest()
 	request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
 	request_sched.send(null);
