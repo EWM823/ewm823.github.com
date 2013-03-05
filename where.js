@@ -102,14 +102,14 @@ function plot_stations() {
        	curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		        		
 		curr_marker = new google.maps.Marker({
     		position: curr_station,
-    		title: stations[i][2],
+    		title: stations[i][3],
    			icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
    		});
    		curr_marker.setMap(map);	
    		stations_marker.push(curr_marker);
  		stations_marker[i] = curr_marker;  	
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
-		 		index_of_station_iw = i;	
+		 		index_of_station_iw = this.title;	
 				updateSTimes();
 				infowindow.setContent("<p>" + this.title + cl_str + "</p>");
 				infowindow.open(map, this);
