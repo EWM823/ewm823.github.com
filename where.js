@@ -160,7 +160,7 @@ function parse_sched() {
 	    			cl_str += "Southbound at ";
 	    		}
 	    		cl_str += parsed_sched[j]["Time"];
-	    		cl _str += "<br />";
+	    		cl_str += "<br />";
     		}
     	}
     }
