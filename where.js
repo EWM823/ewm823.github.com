@@ -43,8 +43,8 @@ function init()
 	/* get parsed schedule of T arrivals and departures */
     request_sched.onreadystatechange = parse_sched;	
     plot_stations()
-    getMyLocation()
     draw_lines()
+    getMyLocation()
 }
 			
 /* get Red Line MBTA schedule information for JSON format*/
@@ -106,9 +106,6 @@ function plot_stations() {
    		google.maps.event.addListener(stations_marker[i], 'click', (function() {
 				infowindow.setContent(this.title);
 				infowindow.open(map, this);
-//				stations_iw[i] = new google.maps.InfoWindow({content: stations_marker[i].title});
-  // 				stations_iw[i].setContent(stations_marker[i].title);
-   	//			stations_iw[i].open(map, stations_marker[i]);
   			}))
   	}
    	
