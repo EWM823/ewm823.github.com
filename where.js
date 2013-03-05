@@ -19,7 +19,6 @@ var myOptions = {
 var map;										//the map
 var marker_me;									//my marker
 var infowindow = new google.maps.InfoWindow();	//the one infowindow that shows up
-var places;
 // the struct of all the stations
 var stations = {"RALE": [42.395428, -71.142483, "Alewife Station", "RALE"],"RDAV": [42.39674, -71.121815, "Davis Square", "RDAV"],"RPOR": [42.3884, -71.119149, "Porter Square", "RPOR"],"RHAR": [42.373362, -71.118956, "Harvard Square", "RHAR"], "RCEN": [42.365486, -71.103802, "Central Square", "RCEN"],"RKEN": [42.36249079, -71.08617653, "Kendall/MIT", "RKEN"],"RMGH": [42.361166, -71.070628, "Charles/MGH", "RMGH"],"RPRK": [42.35639457, -71.0624242,"Park Street", "RPRK"],"RDTC": [42.355518, -71.060225, "Downtown Crossing", "RDTC"],"RSOU": [42.352271, -71.055242, "South Station", "RSOU"],"RBRO": [42.342622, -71.056967, "Broadway", "RBRO"],"RAND": [42.330154, -71.057655, "Andrew", "RAND"],"RJFK": [42.320685, -71.052391, "JFK/UMass", "RJFK"],"RSAV": [42.31129, -71.053331, "Savin Hill", "RSAV"],"RFIE": [42.300093, -71.061667, "Fields Corner", "RFIE"],"RSHA": [42.29312583, -71.06573796, "Shawmut", "RSHA"],"RASH":[42.284652, -71.064489,"Ashmont", "RASH"],"RNQU": [42.275275, -71.029583, "North Quincy", "RNQU"],"RWOL": [42.2665139, -71.0203369,"Wollaston", "RWOL"],"RQUC": [42.251809, -71.005409, "Quincy Center", "RQUC"],"RQUA":[42.233391, -71.007153, "Quincy Adams", "RQUA"],"RBRA": [42.2078543, -71.0011385, "Braintree", "RBRA"]};
 var stations_marker = [];	//array of station markers
@@ -108,6 +107,7 @@ function plot_stations() {
    		curr_marker.setMap(map);	
    		stations_marker.push(curr_marker);
  		stations_marker[i] = curr_marker;
+ 		
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
    				parseJSON
 		 		index_of_station_iw = this.title;
@@ -126,17 +126,8 @@ function parseJSON() {
        	parsed_sched = JSON.parse(str);
     }
 }
-  /*
-   What I want to do: For each infowindow on the station that is opened,
-   I want to get an XMLHttpRequest and parse it. Then, I want to get the information of the 
-   station (use string subtract). Send it back and print within the statement (setContent)
-   
-   
-   
-      
-   
-     */
 
+//load new information for each station marker that is clicked on
 function updateSTimes() {
 	request_sched = new XMLHttpRequest()
 	request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
@@ -145,8 +136,8 @@ function updateSTimes() {
     request_sched.onreadystatechange = parse_sched		   
 	
 }
-
-function parse_sched() {	
+//parsed schedule of trains and set up closure string of Train times
+function parse_sched() {
 	if (request_sched.readyState==4 && request_sched.status==200) {
        	var str = request_sched.responseText;
        	parsed_sched = JSON.parse(str);
@@ -158,8 +149,8 @@ function parse_sched() {
 
     	    Pkey_str = parsed_sched[j]["PlatformKey"];
     	    dir_str = parsed_sched[j]["PlatformKey"];
-    	    Pkey_str = Pkey_str.substr(0, 4);    	
-    	    dir_str = dir_str.substr(4, 1);
+    	    Pkey_str = Pkey_str.substr(0, 4);    		//e.g. RALEN --> RALE
+       	    dir_str = dir_str.substr(4, 1);				//e.g. RALEN --> N
     		if (Pkey_str == stations[index_of_station_iw][3]) {
 
     			if (dir_str == 'N') {
@@ -176,10 +167,12 @@ function parse_sched() {
 			   
 function draw_lines()
 {
+	//make an array of all stations coordinates
 	for (var i in stations) {
 		coord = new google.maps.LatLng(stations[i][0], stations[i][1]);
 		stations_coords.push(coord);
 	}
+	//make an array of all stations coordinates from Alewife to Ashmont
 	for (i = 0; i < 17; i++) {
 		stations_fork1_coords.push(stations_coords[i]);
 	}
@@ -191,9 +184,11 @@ function draw_lines()
 	    strokeWeight: 3,
         clickable: false
     });
+    //plot first polyline
     stations_line1 = new google.maps.Polyline(polyOptions);
     stations_line1.setMap(map);	
 	stations_fork2_coords.push(stations_coords[12]);
+	//repeat for stations from JFK/UMass to Braintree
 	for (i = 17; i < 22; i++) {
 		stations_fork2_coords.push(stations_coords[i]);
 	}
@@ -265,6 +260,7 @@ function findClosestStation()
 {
 	shortest = google.maps.geometry.spherical.computeDistanceBetween(me, stations_coords[0]);
 	closest_station = 'Alewife Station'; //Set equal to First station in array
+	//find info for closest station
 	for (var i in stations) {
 		var coord = new google.maps.LatLng(stations[i][0], stations[i][1]);
 		if (google.maps.geometry.spherical.computeDistanceBetween(me, coord) < shortest) {
@@ -272,6 +268,7 @@ function findClosestStation()
 			closest_station = stations[i][2];
 		}
 	}
+	//convert to miles and round
 	shortest = shortest / 1609.34;
 	shortest = Math.round(shortest*100)/100;
 }
