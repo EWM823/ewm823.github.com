@@ -36,7 +36,6 @@ var distance = [];
 var carmen_icon = 'assets/carmen.png'
 var waldo_icon = 'assets/waldo.png'
 
-
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -106,8 +105,7 @@ function plot_w_and_c()
 function plot_stations() {
 	var curr_marker;           	
 	var curr_station;
-    for (var i in stations) {
-					
+    for (var i in stations) {				
        	curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		        		
 		curr_marker = new google.maps.Marker({
     		position: curr_station,
@@ -128,7 +126,8 @@ function plot_stations() {
 			   
 function draw_lines()
 {
-	for (var i in stations) {
+	//draw left fork
+	for (i=0; i < 16; i++) {
 		coord = new google.maps.LatLng(stations[i][0], stations[i][1]);
 		stations_coords.push(coord);
 	}
@@ -136,7 +135,27 @@ function draw_lines()
        	map: map,
     	path: stations_coords,
    	    strokeColor: "#FF0000",
-    	strokeOpacity: .6,
+    	strokeOpacity: .9,
+	    strokeWeight: 3,
+        clickable: false
+    });
+    stations_line = new google.maps.Polyline(polyOptions);
+		stations_line.setMap(map);
+	
+	//draw right fork
+	for (i=12; i < 21; i++) {
+		coord = new google.maps.LatLng(stations[i][0], stations[i][1]);
+		stations_coords.push(coord);
+		//deal with indeces with forking
+		if (i == 12) {
+			i = 16;
+		}
+	}
+	var polyOptions = new google.maps.Polyline({
+       	map: map,
+    	path: stations_coords,
+   	    strokeColor: "#FF0000",
+    	strokeOpacity: .9,
 	    strokeWeight: 3,
         clickable: false
     });
