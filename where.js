@@ -21,7 +21,7 @@ var marker_me;									//my marker
 var infowindow = new google.maps.InfoWindow();	//the one infowindow that shows up
 var places;
 // the struct of all the stations
-var stations = {"RALE": [42.395428, -71.142483, "Alewife Station"],"RDAV": [42.39674, -71.121815, "Davis Square"],"RPOR": [42.3884, -71.119149, "Porter Square "],"RHAR": [42.373362, -71.118956, "Harvard Square"],"RCEN": [42.365486, -71.103802, "Central Square"],"RKEN": [42.36249079, -71.08617653, "Kendall/MIT"],"RMGH": [42.361166, -71.070628, "Charles/MGH"],"RPRK": [42.35639457, -71.0624242,"Park Street"],"RDTC": [42.355518, -71.060225, "Downtown Crossing"],"RSOU": [42.352271, -71.055242, "South Station"],"RBRO": [42.342622, -71.056967, "Broadway"],"RAND": [42.330154, -71.057655, "Andrew"],"RJFK": [42.320685, -71.052391, "JFK/UMass"],"RSAV": [42.31129, -71.053331, "Savin Hill"],"RFIE": [42.300093, -71.061667, "Fields Corner"],"RSHA": [42.29312583, -71.06573796, "Shawmut"],"RASH":[42.284652, -71.064489,"Ashmont"],"RNQU": [42.275275, -71.029583, "North Quincy"],"RWOL": [42.2665139, -71.0203369,"Wollaston"],"RQUC": [42.251809, -71.005409, "Quincy Center"],"RQUA":[42.233391, -71.007153, "Quincy Adams"],"RBRA": [42.2078543, -71.0011385, "Braintree"]};
+var stations = {"RALE": [42.395428, -71.142483, "Alewife Station", "RALE"],"RDAV": [42.39674, -71.121815, "Davis Square", "RDAV"],"RPOR": [42.3884, -71.119149, "Porter Square", "RPOR"],"RHAR": [42.373362, -71.118956, "Harvard Square", "RHAR"], "RCEN": [42.365486, -71.103802, "Central Square", "RCEN"],"RKEN": [42.36249079, -71.08617653, "Kendall/MIT", "RKEN"],"RMGH": [42.361166, -71.070628, "Charles/MGH", "RMGH"],"RPRK": [42.35639457, -71.0624242,"Park Street", "RPRK"],"RDTC": [42.355518, -71.060225, "Downtown Crossing", "RDTC"],"RSOU": [42.352271, -71.055242, "South Station", "RSOU"],"RBRO": [42.342622, -71.056967, "Broadway", "RBRO"],"RAND": [42.330154, -71.057655, "Andrew", "RAND"],"RJFK": [42.320685, -71.052391, "JFK/UMass", "RJFK"],"RSAV": [42.31129, -71.053331, "Savin Hill", "RSAV"],"RFIE": [42.300093, -71.061667, "Fields Corner", "RFIE"],"RSHA": [42.29312583, -71.06573796, "Shawmut", "RSHA"],"RASH":[42.284652, -71.064489,"Ashmont", "RASH"],"RNQU": [42.275275, -71.029583, "North Quincy", "RNQU"],"RWOL": [42.2665139, -71.0203369,"Wollaston", "RWOL"],"RQUC": [42.251809, -71.005409, "Quincy Center", "RQUC"],"RQUA":[42.233391, -71.007153, "Quincy Adams", "RQUA"],"RBRA": [42.2078543, -71.0011385, "Braintree", "RBRA"]};
 var stations_marker = [];	//array of station markers
 var w_and_c_marker = [];	// array of up waldo's and/or/nor carmen's markers
 var stations_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
@@ -36,7 +36,6 @@ var distance = [];
 var carmen_icon = 'assets/carmen.png'
 var waldo_icon = 'assets/waldo.png'
 var parsed_sched
-var temp_marker
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -106,7 +105,6 @@ function plot_stations() {
    		});
    		curr_marker.setMap(map);	
    		stations_marker.push(curr_marker);
-        temp_marker = curr_marker;   		            		
  		stations_marker[i] = curr_marker;  		
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
 				updateSTimes(stations_marker[i])
@@ -120,7 +118,7 @@ function plot_stations() {
    /*
    What I want to do: For each infowindow on the station that is opened,
    I want to get an XMLHttpRequest and parse it. Then, I want to get the information of the 
-   station (use string subtract). Send it back and print within the statement
+   station (use string subtract). Send it back and print within the statement (setContent)
    
    
    
@@ -144,8 +142,10 @@ function parse_sched() {
     
     console.log("success");
     }
-    for (var i in parsed_sched) {
-    	if (temp_marker.title == parsed_sched[i][2]) {
+    var temp_str;
+    for (var i in stations) {
+	    temp_str = parsed_sched.substr(0, 4);    	
+    	if (temp_str == parsed_sched[i][3]) {
     		console.log("sucess");
     	}
     }
