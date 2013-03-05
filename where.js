@@ -140,7 +140,7 @@ function draw_lines()
 	}
 	var polyOptions = new google.maps.Polyline({
    		map: map,
-	   	path: stations_coords_fork1_coords,
+	   	path: stations_fork1_coords,
    	    strokeColor: "#FF0000",
     	strokeOpacity: .6,
 	    strokeWeight: 3,
@@ -154,7 +154,7 @@ function draw_lines()
 	}
 	var polyOptions = new google.maps.Polyline({
        	map: map,
-		path: stations_coords_fork2_coords,
+		path: stations_fork2_coords,
    	    strokeColor: "#FF0000",
  		strokeOpacity: .6,
 	    strokeWeight: 3,
