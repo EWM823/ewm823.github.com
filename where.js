@@ -182,6 +182,7 @@ function findClosestStation()
 		}
 	}
 	for (var i in stations) {
+			console.log('hey');
 		if (i == index_of_closest) {
 		console.log('hey');
 			closest_station = stations[i][2];
