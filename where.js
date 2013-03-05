@@ -123,21 +123,22 @@ function updateSTimes(curr_marker) {
 	request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
 	request_sched.send(null);
 	/* get parsed schedule of T arrivals and departures */
-    request_sched.onreadystatechange = parse_sched;		   
+    request_sched.onreadystatechange = parse_sched(curr_marker);		   
 	
-	for (var i in parsed_sched) {
-//		if (curr_marker.title == parsed_sched[i][2]) {
-			console.log("success");
-//		}
-	}
-
 }
 
-function parse_sched() {	
+function parse_sched(curr_marker) {	
 	if (request_sched.readyState==4 && request_sched.status==200) {
        	var str = request_sched.responseText;
        	parsed_sched = JSON.parse(str);
     }
+    for (var i in parsed_sched) {
+    	if (curr_marker.title = parsed_sched[i][2]) {
+    		console.log("sucess");
+    	}
+    }
+
+
 }		
 			   
 function draw_lines()
