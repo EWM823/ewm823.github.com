@@ -82,10 +82,10 @@ function plot_w_and_c()
 	   		w_and_c_marker.push(curr_marker);
            		
 	   		w_and_c_marker[i] = curr_marker;  		
-	   		google.maps.event.addListener(w_and_c_marker[i], 'click', (function() {
+	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
 					infowindow.setContent(this.title);
 					infowindow.open(map, this);
-	 	    }));
+	 	    });
 		}
 	}
 }
@@ -194,8 +194,8 @@ function get_w_and_c_distance()
 		var distance;							
     //	for (var i in w_and_c_marker) {
     	console.log("hey");
-    		var coord = w_and_c_marker[0].position;
-    		distance = google.maps.geometry.spherical.computeDistanceBetween(me, coord);
+    		 curr_coords = w_and_c_marker[0].position;
+    		distance = google.maps.geometry.spherical.computeDistanceBetween(me, curr_coords);
     		distance = distance / 1609.34;
     		distance = Math.round(distance*100)/100;
 	   		google.maps.event.addListener(w_and_c_marker[0], 'click', (function() {
