@@ -27,6 +27,8 @@ var w_and_c_marker = [];	// array of up waldo's and/or/nor carmen's markers
 var stations_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var w_and_c_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var stations_coords = [];	// Array of stations coordinates
+var index_of_closest;		//index of closest T Station
+
 			
 function init()
 {
@@ -83,21 +85,7 @@ function plot_w_and_c()
 		}
 	}
 }
-function haversine(coord)
-{
-	lat1 = me[0]
-	long1 = me[1]
-	var R = 3959; // mi
-	var dLat = (lat2-lat1).toRad();
-	var dLon = (lon2-lon1).toRad();
-	var lat1 = lat1.toRad();
-	var lat2 = lat2.toRad();
 
-	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-	        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-	var d = R * c;
-}
 
 function plot_stations() {
 	var curr_marker;           	
@@ -167,12 +155,12 @@ function renderMap()
 
 
 	// Find distance between me and closest T Station
-	var shortest distance;
+	var closest = findClosestStation()
 	
 	// Create a marker	
 	marker_me = new google.maps.Marker({
 		position: me,
-		title: "Here I Am!"
+		title: "Here I Am!\n\n Closest Station: " + stations[index_of_closest][3] + " is " + closest + "miles from you"
 	});
 	marker_me.setMap(map);
 
@@ -182,5 +170,33 @@ function renderMap()
 		infowindow.open(map, this);
 	});
 
+}
+function haversine(lat2, long2)
+{
+	lat1 = me[0]
+	long1 = me[1]
+	var R = 3959; // mi
+	var dLat = (lat2-lat1).toRad();
+	var dLon = (lon2-lon1).toRad();
+	var lat1 = lat1.toRad();
+	var lat2 = lat2.toRad();
+
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+	        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var d = R * c;
+}
+function findClosestStation()
+{
+	var shortest
+	for (var i in stations_coords) {
+		shortest = haversine(stations[i][0], stations[i][1]);
+		index_of_closest = i;
+		if (haversine(stations[i][0], stations[i][1]) < shortest) {
+			shortest = haversine(stations[i][0], stations[i][1]);
+			index_of_closest = i;
+		}
+	}
+	return shortest;
 }
 
