@@ -36,7 +36,7 @@ var distance = [];
 var carmen_icon = 'assets/carmen.png'
 var waldo_icon = 'assets/waldo.png'
 var parsed_sched
-var cl_str
+var cl_str = ' ';
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
