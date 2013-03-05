@@ -48,7 +48,7 @@ function init()
     plot_stations()
     draw_lines()
     getMyLocation()
-    get_w_and_c_distance()
+//    get_w_and_c_distance()
 }
 			
 /* get Red Line MBTA schedule information for JSON format*/
