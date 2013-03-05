@@ -28,7 +28,10 @@ var stations_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var w_and_c_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var stations_coords = [];	// Array of stations coordinates
 var index_of_closest;		//index of closest T Station
-
+var lat1;
+var long1;
+var lat2;
+var long2;
 			
 function init()
 {
@@ -173,10 +176,10 @@ function renderMap()
 }
 function haversine(stations_lat, stations_long)
 {
-	var lat1 = me[0];
-	var long1 = me[1];
-	var lat2 = stations_lat;
-	var long2 = stations_long;
+	lat1 = me[0];
+	long1 = me[1];
+	lat2 = stations_lat;
+	long2 = stations_long;
 	var R = 3959; // mi
 	var dLat = (lat2-lat1).toRad();
 	var dLon = (lon2-lon1).toRad();
