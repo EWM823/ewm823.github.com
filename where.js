@@ -177,7 +177,7 @@ function renderMap()
 function haversine(stations_lat, stations_long)
 {
 	lat1 = myLat;
-	long1 = myLong;
+	long1 = myLng;
 	lat2 = stations_lat;
 	long2 = stations_long;
 	var R = 3959; // mi
