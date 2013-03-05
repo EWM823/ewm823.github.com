@@ -147,10 +147,10 @@ function updateSTimes() {
 }
 
 function parse_sched() {	
-	//if (request_sched.readyState==4 && request_sched.status==200) {
+	if (request_sched.readyState==4 && request_sched.status==200) {
        	var str = request_sched.responseText;
        	parsed_sched = JSON.parse(str);
-    //}
+    }
     
     var temp_str;
     cl_str = "<br/>";
