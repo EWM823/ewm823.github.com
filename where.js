@@ -35,7 +35,7 @@ var shortest;				//shortest distance between me and T station
 var distance = [];
 var carmen_icon = 'assets/carmen.png'
 var waldo_icon = 'assets/waldo.png'
-
+var parsed_sched = [];
 
 function init()
 {
