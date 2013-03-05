@@ -183,6 +183,5 @@ function findClosestStation()
 			index_of_closest = i;
 		}
 	}
-	return shortest;
 }
 
