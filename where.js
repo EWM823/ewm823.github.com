@@ -109,6 +109,7 @@ function plot_stations() {
    		stations_marker.push(curr_marker);
  		stations_marker[i] = curr_marker;
    		google.maps.event.addListener(stations_marker[i], 'click', function() {
+   				parse_JSON
 		 		index_of_station_iw = this.title;
    				parse_sched
 				updateSTimes();
@@ -119,7 +120,13 @@ function plot_stations() {
   	}
 }
 
-   /*
+function parseJSON() {
+	if (request_sched.readyState==4 && request_sched.status==200) {
+       	var str = request_sched.responseText;
+       	parsed_sched = JSON.parse(str);
+    }
+    }
+  /*
    What I want to do: For each infowindow on the station that is opened,
    I want to get an XMLHttpRequest and parse it. Then, I want to get the information of the 
    station (use string subtract). Send it back and print within the statement (setContent)
