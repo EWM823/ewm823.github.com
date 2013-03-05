@@ -159,7 +159,7 @@ function renderMap()
 	// Create a marker	
 	marker_me = new google.maps.Marker({
 		position: me,
-		title: "Here I Am!\n\n Closest Station: " + stations[index_of_closest][3] + " is " + shortest + "miles from you"
+		title: "Here I Am!\n\n Closest Station: " + stations[index_of_closest][2] + " is " + shortest + "miles from you"
 	});
 	marker_me.setMap(map);
 
