@@ -39,7 +39,8 @@ var index_of_station_iw;
 
 function init()
 {
-	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	parsed_sched = JSON.parse
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 	getMyCoordinates()
 	request_w_and_c.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
 	request_w_and_c.send(null);
