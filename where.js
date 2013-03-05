@@ -27,6 +27,8 @@ var w_and_c_marker = [];	// array of up waldo's and/or/nor carmen's markers
 var stations_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var w_and_c_iw = [];		// DELETE THIS--ARRAY OF INFO WINDOWS IS UNNECESARRY
 var stations_coords = [];	// Array of stations coordinates
+var stations_fork1_coords = [];		//Array of stations coordinates on left fork
+var stations_fork2_coords = [];		//Array of stations coordinates on left fork
 var index_of_closest;		//index of closest T Station
 var closest_station;		//name of closest T Station
 var shortest;
@@ -36,9 +38,11 @@ var distance = [];
 var carmen_icon = 'assets/carmen.png'
 var waldo_icon = 'assets/waldo.png'
 
+
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	getMyCoordinates()
 	request_w_and_c.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
 	request_w_and_c.send(null);
 	/* get parsed locations/info of waldo and carmen sandiego */
@@ -105,7 +109,8 @@ function plot_w_and_c()
 function plot_stations() {
 	var curr_marker;           	
 	var curr_station;
-    for (var i in stations) {				
+    for (var i in stations) {
+					
        	curr_station = new google.maps.LatLng(stations[i][0], stations[i][1]);        		        		
 		curr_marker = new google.maps.Marker({
     		position: curr_station,
@@ -126,41 +131,37 @@ function plot_stations() {
 			   
 function draw_lines()
 {
-	//draw left fork
-	for (i=0; i < 16; i++) {
+	for (var i in stations) {
 		coord = new google.maps.LatLng(stations[i][0], stations[i][1]);
 		stations_coords.push(coord);
 	}
+	for (i = 0; i < 13; i++) {
+		stations_fork1_coords.push(stations_coords[i]);
+	}
 	var polyOptions = new google.maps.Polyline({
-       	map: map,
-    	path: stations_coords,
+   		map: map,
+	   	path: stations_coords_fork1_coords,
    	    strokeColor: "#FF0000",
-    	strokeOpacity: .9,
+    	strokeOpacity: .6,
 	    strokeWeight: 3,
         clickable: false
     });
-    stations_line = new google.maps.Polyline(polyOptions);
-		stations_line.setMap(map);
-	
-	//draw right fork
-	for (i=12; i < 21; i++) {
-		coord = new google.maps.LatLng(stations[i][0], stations[i][1]);
-		stations_coords.push(coord);
-		//deal with indeces with forking
-		if (i == 12) {
-			i = 16;
-		}
+    stations_line1 = new google.maps.Polyline(polyOptions);
+    stations_line1.setMap(map);	
+	stations_fork2_coords.push(stations_coords[12]);
+	for (i = 17; i < 22; i++) {
+		stations_fork2_coords.push(stations_coords[i]);
 	}
 	var polyOptions = new google.maps.Polyline({
        	map: map,
-    	path: stations_coords,
+		path: stations_coords_fork2_coords,
    	    strokeColor: "#FF0000",
-    	strokeOpacity: .9,
+ 		strokeOpacity: .6,
 	    strokeWeight: 3,
-        clickable: false
-    });
-    stations_line = new google.maps.Polyline(polyOptions);
-		stations_line.setMap(map);
+	    clickable: false
+   	});
+    stations_line2 = new google.maps.Polyline(polyOptions);
+	stations_line2.setMap(map);
 }
 
 /* uses navigator.geolocation to find my location */
