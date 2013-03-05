@@ -144,9 +144,13 @@ function parse_sched() {
     }
     var temp_str;
     for (var i in stations) {
-	    temp_str = parsed_sched.PlatformKey;    	
-    	if (temp_str == parsed_sched[i][3]) {
-    		console.log("sucess");
+    	for (var j in parsed_sched) {
+    		
+    	    temp_str = parsed_sched[j]["PlatformKey"];
+    	    temp_str = temp_str.substr(0, 4);    	
+    		if (temp_str == stations[i][3]) {
+    			console.log("sucess");
+    		}
     	}
     }
 
