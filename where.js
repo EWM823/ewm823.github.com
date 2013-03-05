@@ -72,9 +72,9 @@ function plot_w_and_c()
 									
     	for (i=0; i < parsed_w_and_c.length; i++) {
 	      	curr_coords = new google.maps.LatLng(parsed_w_and_c[i].loc.latitude, parsed_w_and_c[i].loc.longitude);
-    		distance[i] = google.maps.geometry.spherical.computeDistanceBetween(me, curr_coords);
-    		distance[i] = distance[i] / 1609.34;
-    		distance[i] = Math.round(distance[i]*100)/100;
+    		distance = google.maps.geometry.spherical.computeDistanceBetween(me, curr_coords);
+    		distance = distance / 1609.34;
+    		distance = Math.round(distance*100)/100;
    			curr_marker = new google.maps.Marker({
 	   			position: curr_coords,
 	   			title: parsed_w_and_c[i].name + '<br />' + parsed_w_and_c[i].loc.note,
@@ -83,9 +83,11 @@ function plot_w_and_c()
 	   		curr_marker.setMap(map);
 	   		w_and_c_marker.push(curr_marker);
            		
-	   		w_and_c_marker[i] = curr_marker;  		
+	   		w_and_c_marker[i] = curr_marker;
+	   		if (w_and_c_marker[i].name == "Carmen Sandiego") {
+	   			w_distance = distance;
 	   		google.maps.event.addListener(w_and_c_marker[i], 'click', function() {
-					infowindow.setContent(this.title + "<br />" + "Distance from you: " + distance[i]);
+					infowindow.setContent(this.title + "<br />" + "Distance from you: " + distance);
 					infowindow.open(map, this);
 	 	    });
 		}
