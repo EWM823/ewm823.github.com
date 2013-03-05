@@ -30,7 +30,8 @@ var stations_coords = [];	// Array of stations coordinates
 var index_of_closest;		//index of closest T Station
 var closest_station;		//name of closest T Station
 var shortest;
-
+var w_distance;
+var c_distance;
 
 function init()
 {
@@ -46,6 +47,7 @@ function init()
     plot_stations()
     draw_lines()
     getMyLocation()
+    get_w_and_c_distance()
 }
 			
 /* get Red Line MBTA schedule information for JSON format*/
@@ -183,4 +185,21 @@ function findClosestStation()
 	}
 	shortest = shortest / 1609.34;
 	shortest = Math.round(shortest*100)/100;
+}
+
+function get_w_and_c_distance()
+{
+       	var curr_marker;           	
+		var curr_coords; 
+									
+    	for (i=0; i < parsed_w_and_c.length; i++) {
+    		var coord = w_and_c_marker[i].position;
+    		distance = google.maps.geometry.spherical.computDistanceBetween(me, coord);
+    		distance = distance / 1609.34;
+    		distance = Math.round(distance*100)/100;
+	   		google.maps.event.addListener(w_and_c_marker[i], 'click', (function() {
+					infowindow.setContent(this.title + <br /> + "Distance from you: " + distance);
+					infowindow.open(map, this);
+	 	    }));
+		}
 }
