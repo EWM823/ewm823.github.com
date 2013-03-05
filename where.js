@@ -131,7 +131,7 @@ function updateSTimes(curr_marker) {
 	request_sched.open("GET", "http://mbtamap-cedar.herokuapp.com/mapper/redline.json", true);
 	request_sched.send(null);
 	/* get parsed schedule of T arrivals and departures */
-    request_sched.onreadystatechange = parse_sched(curr_marker);		   
+    request_sched.onreadystatechange = parse_sched(curr_marker)		   
 	
 }
 
