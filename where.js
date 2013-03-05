@@ -195,12 +195,13 @@ function findClosestStation()
 {
 	var shortest
 	for (var i in stations) {
-		shortest = haversine(stations[i][0], stations[i][1]);
+		
+//		shortest = haversine(stations[i][0], stations[i][1]);
 		index_of_closest = i;
-		if (haversine(stations[i][0], stations[i][1]) < shortest) {
-			shortest = haversine(stations[i][0], stations[i][1]);
-			index_of_closest = i;
-		}
+		//if (haversine(stations[i][0], stations[i][1]) < shortest) {
+		//	shortest = haversine(stations[i][0], stations[i][1]);
+		//	index_of_closest = i;
+		//}
 	}
 	return shortest;
 }
