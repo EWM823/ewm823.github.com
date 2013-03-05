@@ -36,6 +36,7 @@ var distance = [];
 var carmen_icon = 'assets/carmen.png'
 var waldo_icon = 'assets/waldo.png'
 var parsed_sched
+var cl_str
 function init()
 {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -143,13 +144,23 @@ function parse_sched() {
     console.log("success");
     }
     var temp_str;
+    cl_str = "<br />";
     for (var i in stations) {
     	for (var j in parsed_sched) {
     		
-    	    temp_str = parsed_sched[j]["PlatformKey"];
-    	    temp_str = temp_str.substr(0, 4);    	
-    		if (temp_str == stations[i][3]) {
-    			console.log("sucess");
+    	    Pkey_str = parsed_sched[j]["PlatformKey"];
+    	    dir_str = parsed_sched[j]["PlatformKey"];
+    	    Pkey_str = temp_str.substr(0, 4);    	
+    	    dir_str = temp_str.substr(4, 1);
+    		if (Pkey_str == stations[i][3]) {
+    			if (dir_str == 'N') {
+	    			cl_str += "Northbound at ";
+	    		}
+	    		else if (dir_str == 'S') {
+	    			cl_str += "Southbound at ";
+	    		}
+	    		cl_str += parsed_sched[j]["Time"];
+	    		cl _str += "<br />";
     		}
     	}
     }
