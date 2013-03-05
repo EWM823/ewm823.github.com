@@ -183,6 +183,6 @@ function findClosestStation()
 			index_of_closest = i;
 		}
 	}
-	console.log(index_of_closest);
+	console.log('hey');
 }
 
