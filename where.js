@@ -171,10 +171,12 @@ function renderMap()
 	});
 
 }
-function haversine(lat2, long2)
+function haversine(stations_lat, stations_long)
 {
 	var lat1 = me[0];
 	var long1 = me[1];
+	var lat2 = stations_lat;
+	var long2 = stations_long;
 	var R = 3959; // mi
 	var dLat = (lat2-lat1).toRad();
 	var dLon = (lon2-lon1).toRad();
