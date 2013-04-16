@@ -311,7 +311,11 @@ function check_highscore() {
 }
 
 function reset_board() {
-	num_lives = 2;
+
+/*"http://powerful-oasis-7334.herokuapp.com/submit.json"*/
+   var player_name = prompt("you lost. now enter your name, homie.","name");
+   $.post("localhost:3000/submit.json",{game_title: "Frogger", name: player_name, score: 2000 + score, created_at: new Date()});
+    num_lives = 2;
 	score = 0;
 	level = 1;
 	row_reached = [0,0,0,0,0,0,0,0,0,0,0,0,0];
