@@ -314,7 +314,7 @@ function reset_board() {
 
 /*"http://powerful-oasis-7334.herokuapp.com/submit.json"*/
    var player_name = prompt("you lost. now enter your name, homie.","name");
-   $.post("http://powerful-oasis-7334.herokuapp.com/submit.json",{game_title: "Frogger", name: player_name, score: 2000 + score, created_at: new Date()});
+   $.post("http://powerful-oasis-7334.herokuapp.com/submit.json",{game_title: "Frogger", username: player_name, score: 2000 + score});
     num_lives = 2;
 	score = 0;
 	level = 1;
